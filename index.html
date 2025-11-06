@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connor Regard, EIT - Professional Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+            min-height: 100vh;
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1rem 2rem;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #dc2626;
+            font-weight: 600;
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+
+        nav a:hover {
+            color: #ef4444;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 6rem 2rem 2rem;
+        }
+
+        section {
+            background: white;
+            margin: 2rem 0;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        h1 {
+            color: #dc2626;
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+
+        h2 {
+            color: #dc2626;
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 4px solid #ef4444;
+            padding-bottom: 0.5rem;
+        }
+
+        .hero {
+            text-align: center;
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 6px solid white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+        }
+
+        .hero-text h1 {
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin: 1rem 0;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+        }
+
+        .about-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .about-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .about-section.reverse {
+            direction: rtl;
+        }
+
+        .about-section.reverse > * {
+            direction: ltr;
+        }
+
+        .about-text-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .about-text {
+            font-size: 1.3rem;
+            color: #475569;
+            line-height: 1.9;
+        }
+
+        .about-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .experience-item, .reference-item {
+            margin: 2rem 0;
+            padding: 2rem;
+            background: linear-gradient(to right, #f8fafc 0%, #f1f5f9 100%);
+            border-left: 5px solid #ef4444;
+            border-radius: 12px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .experience-item:hover, .reference-item:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.2);
+        }
+
+        .experience-item h3, .reference-item h3 {
+            color: #dc2626;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-item .company {
+            color: #ef4444;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .experience-item .date {
+            color: #64748b;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .experience-item ul {
+            margin-left: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .experience-item li {
+            margin: 0.5rem 0;
+            color: #475569;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 25px;
+            font-size: 0.95rem;
+            box-shadow: 0 3px 10px rgba(220, 38, 38, 0.3);
+            transition: transform 0.2s;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px);
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: linear-gradient(to right, #f8fafc 0%, #f1f5f9 100%);
+            border-radius: 12px;
+            transition: transform 0.3s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(220, 38, 38, 0.2);
+        }
+
+        .contact-item svg {
+            width: 28px;
+            height: 28px;
+            fill: #ef4444;
+        }
+
+        .contact-item a {
+            color: #dc2626;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            color: #ef4444;
+            text-decoration: underline;
+        }
+
+        .about-text {
+            font-size: 1.3rem;
+            color: #475569;
+            line-height: 1.9;
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            section {
+                padding: 2rem 1.5rem;
+            }
+
+            .hero-content {
+                flex-direction: column;
+            }
+
+            .about-section {
+                grid-template-columns: 1fr;
+            }
+
+            .about-section.reverse {
+                direction: ltr;
+            }
+
+            .about-image {
+                height: 300px;
+            }
+
+            .photo-gallery {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .photo-gallery img {
+                width: 100%;
+                height: 200px;
+                object-fit: cover;
+                border-radius: 15px;
+                box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+                transition: transform 0.3s, box-shadow 0.3s;
+            }
+
+            .photo-gallery img:hover {
+                transform: translateY(-5px) scale(1.02);
+                box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+            }
+        }
+    </style>
+</head>
+<body>
+            <nav>
+        <ul>
+            <li><a href="#about">About Me</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#references">References</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <section class="hero">
+            <div class="hero-content">
+                <img src="headshot.jpg" alt="Connor Regard Professional Photo" class="hero-image">
+                <div class="hero-text">
+                    <h1>Connor Regard, EIT</h1>
+                    <p class="subtitle">Data Engineer | Electrical Engineer</p>
+                    <p>LSU Electrical Engineering Graduate | Dallas, TX</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <h2>About Me</h2>
+            <div class="about-content">
+                <div class="about-section">
+                    <div class="about-text-section">
+                        <p class="about-text">Hey there! I'm Connor (that's me on the left), a Louisiana native and proud LSU Tiger who recently made the move to Dallas to kick off my career as a Data Engineer at Telios. I graduated with my BS in Electrical Engineering in May 2025 and passed my FE exam shortly after, officially making me an Engineer in Training!</p>
+                    </div>
+                    <img src="connor at event.png" alt="Connor at LSU formal event" class="about-image">
+                </div>
+
+                <div class="about-section reverse">
+                    <div class="about-text-section">
+                        <p class="about-text">My journey into engineering has been anything but typical. I started my first business at 16, running CR Pressure Washing throughout high school and college, serving over 70 homes across Louisiana. That entrepreneurial experience taught me grit, customer service, and how to manage projects from start to finish... skills that still serve me well today.</p>
+                    </div>
+                    <img src="lsu graduation.png" alt="LSU Graduation 2025" class="about-image">
+                </div>
+
+                <div class="about-section">
+                    <div class="about-text-section">
+                        <p class="about-text">At LSU, I dove deep into electrical systems, controls, and automation. From programming PLCs and designing electrical systems during my internship at Olin to building an automated bartender for my senior capstone project, I love solving complex problems with creative, hands on solutions. I also served as Academic Chair for SAE fraternity and stayed involved with IEEE, Habitat for Humanity, and Younglife.</p>
+                    </div>
+                    <img src="friends standing next to robot.png" alt="Senior design automated bartender project" class="about-image">
+                </div>
+
+                <div class="about-section reverse">
+                    <div class="about-text-section">
+                        <p class="about-text">When I'm not designing low voltage systems or optimizing data center infrastructure, you'll find me on the golf course, in the gym, or tinkering with the latest tech. I'm passionate about continuous improvement... whether that's in my career, my golf swing, or my mile PR. I thrive in collaborative environments and love working with teams that push each other to be better every day.</p>
+                    </div>
+                    <img src="golf.png" alt="golf trip with friends" class="about-image">
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Core Skills & Expertise</h2>
+            <div class="skills">
+                <span class="skill-tag">Electrical Design</span>
+                <span class="skill-tag">Revit & AutoCAD</span>
+                <span class="skill-tag">PLC Programming</span>
+                <span class="skill-tag">Low Voltage Systems</span>
+                <span class="skill-tag">Project Management</span>
+                <span class="skill-tag">Data Centers</span>
+                <span class="skill-tag">SEO & Strategy</span>
+                <span class="skill-tag">Problem Solving</span>
+                <span class="skill-tag">Team Leadership</span>
+            </div>
+        </section>
+
+        <section id="experience">
+            <h2>Professional Experience</h2>
+            
+            <div class="experience-item">
+                <h3>Data Engineer</h3>
+                <div class="company">Telios</div>
+                <div class="date">July 2025 - Present | Dallas, TX</div>
+                <ul>
+                    <li>Support the low voltage engineering team on large scale construction projects including data centers, automotive manufacturing facilities, and commercial office buildings</li>
+                    <li>Produce and coordinate detailed electrical design documents using Revit, ensuring integration with architectural and mechanical systems while meeting code and client standards</li>
+                    <li>Collaborate directly with clients, contractors, and internal teams to resolve field coordination issues and deliver constructible low voltage solutions including technology, AV, and security systems</li>
+                </ul>
+                <div class="skills">
+                    <span class="skill-tag">Revit</span>
+                    <span class="skill-tag">AutoCAD</span>
+                    <span class="skill-tag">Low Voltage Design</span>
+                    <span class="skill-tag">Data Centers</span>
+                    <span class="skill-tag">Project Coordination</span>
+                    <span class="skill-tag">Client Relations</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <h3>Product Strategy Analyst (Contract)</h3>
+                <div class="company">StudyForFE</div>
+                <div class="date">May 2025 - Present | Remote</div>
+                <ul>
+                    <li>Collaborated with the founder of Study for FE, a national SaaS based education platform serving thousands of engineering students preparing for professional licensure exams</li>
+                    <li>Led SEO and competitive market research to identify high impact keywords, content gaps, and optimization strategies that improved visibility and lead conversion</li>
+                    <li>Strengthened sales performance by improving student onboarding processes and implementing AI driven lead nurture strategies that kept prospects engaged throughout the funnel</li>
+                </ul>
+                <div class="skills">
+                    <span class="skill-tag">SEO Strategy</span>
+                    <span class="skill-tag">Market Research</span>
+                    <span class="skill-tag">AI Tools</span>
+                    <span class="skill-tag">SaaS Analytics</span>
+                    <span class="skill-tag">Sales Optimization</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <h3>Electrical Engineering Intern</h3>
+                <div class="company">Olin Corporation</div>
+                <div class="date">May 2024 - August 2025 | St. Gabriel, LA</div>
+                <ul>
+                    <li>Collaborated with maintenance and reliability engineers to enhance plant reliability through electrical control systems optimization and troubleshooting</li>
+                    <li>Executed flow meter redundancy project, managed large scale concrete containment repairs, and led the redesign of critical mechanical systems to enhance operational efficiency</li>
+                    <li>Developed advanced electrical control systems using PLC programming, DCS, and Allen Bradley platforms while ensuring compliance with safety standards</li>
+                </ul>
+                <div class="skills">
+                    <span class="skill-tag">PLC Programming</span>
+                    <span class="skill-tag">Allen Bradley</span>
+                    <span class="skill-tag">DCS Systems</span>
+                    <span class="skill-tag">SAP</span>
+                    <span class="skill-tag">Instrumentation</span>
+                    <span class="skill-tag">Project Management</span>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <h3>Founder & Operator</h3>
+                <div class="company">CR Pressure Washing</div>
+                <div class="date">April 2018 - August 2022 | Shreveport, LA</div>
+                <ul>
+                    <li>Founded and successfully operated a pressure washing business from age 16 through college</li>
+                    <li>Completed pressure washing projects for over 70 homes across Louisiana, managing all aspects of customer relations, scheduling, and service delivery</li>
+                    <li>Developed strong business acumen, work ethic, and customer service skills that continue to serve me in my engineering career</li>
+                </ul>
+                <div class="skills">
+                    <span class="skill-tag">Entrepreneurship</span>
+                    <span class="skill-tag">Customer Service</span>
+                    <span class="skill-tag">Business Operations</span>
+                    <span class="skill-tag">Time Management</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="references">
+            <h2>Professional References</h2>
+            
+            <div class="reference-item">
+                <h3>Wasim Asghar</h3>
+                <p><strong>Founder, StudyForFE</strong></p>
+                <p>"Connor first reached out to me offering to work for free just to gain experience in sales and marketing. From the start, his initiative stood out. What began as a simple learning opportunity quickly turned into something much bigger. Connor now contributes on multiple fronts, from developing automation systems to helping shape marketing strategy and improving overall operations.</p>
+                <p>He's the kind of person who figures things out quickly, takes ownership, and always brings a positive, solutions oriented attitude. Connor's curiosity and drive make him a pleasure to work with, and it's been great watching him grow into someone who adds real value to every project he touches."</p>
+            </div>
+
+            <div class="reference-item">
+                <h3>Dave Giurintano</h3>
+                <p><strong>LSU Capstone Professor</strong></p>
+                <p>"Mr. Regard has impressed me as a hard worker and someone who is extremely flexible and wise in a time of crisis. I have no doubt that he will thrive in any of his future endeavors!"</p>
+            </div>
+
+            <div class="reference-item">
+                <h3>Additional References</h3>
+                <p>Additional professional references from Telios and Olin Corporation leadership are available upon request. I'm happy to connect you with supervisors and colleagues who can speak to my technical abilities, work ethic, and collaborative approach to engineering challenges.</p>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <p class="about-text">I'm always interested in connecting with fellow engineers, potential collaborators, or anyone who wants to talk about electrical systems, tech, or the best golf courses in Dallas. Feel free to reach out!</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    <div>
+                        <strong>Email</strong><br>
+                        <a href="mailto:connorregard1@gmail.com">connorregard1@gmail.com</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    <div>
+                        <strong>Phone</strong><br>
+                        <a href="tel:+13182682970">(318) 268-2970</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                    <div>
+                        <strong>LinkedIn</strong><br>
+                        <a href="https://linkedin.com/in/connor-regard" target="_blank">linkedin.com/in/connor-regard</a>
+                    </div>
+                </div>
+
+                <div class="contact-item">
+                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    <div>
+                        <strong>Location</strong><br>
+                        Dallas, Texas
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // Animate About Me sections on scroll
+        const aboutSections = document.querySelectorAll('.about-section');
+        
+        const aboutObserver = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.3,
+            rootMargin: '0px 0px -100px 0px'
+        });
+
+        aboutSections.forEach(section => {
+            aboutObserver.observe(section);
+        });
+
+        // Add animation on scroll for other sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
