@@ -12,62 +12,87 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-            min-height: 100vh;
+            color: #2c3e50;
+            background: #f8f9fa;
+            overflow-x: hidden;
         }
 
         nav {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem 2rem;
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
         }
 
         nav ul {
             list-style: none;
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            gap: 3rem;
         }
 
         nav a {
             text-decoration: none;
-            color: #dc2626;
+            color: #2c3e50;
             font-weight: 600;
-            transition: color 0.3s;
-            font-size: 1.1rem;
+            font-size: 1rem;
+            letter-spacing: 0.3px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: #3498db;
+            border-radius: 2px;
+            transition: width 0.3s ease;
         }
 
         nav a:hover {
-            color: #ef4444;
+            color: #3498db;
+        }
+
+        nav a:hover::after {
+            width: 100%;
         }
 
         .container {
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 6rem 2rem 2rem;
+            padding: 5rem 3rem 3rem;
         }
 
         section {
             background: white;
-            margin: 2rem 0;
-            padding: 3rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-            animation: fadeIn 0.6s ease-in;
+            margin: 3rem 0;
+            padding: 4rem 3.5rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
+            animation: fadeInUp 0.7s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        @keyframes fadeIn {
+        section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(20px);
+                transform: translateY(30px);
             }
             to {
                 opacity: 1;
@@ -76,52 +101,48 @@
         }
 
         h1 {
-            color: #dc2626;
-            font-size: 3.5rem;
+            color: #1a1a1a;
+            font-size: 4rem;
             margin-bottom: 0.5rem;
             text-align: center;
+            font-weight: 700;
+            letter-spacing: -1px;
         }
 
         h2 {
-            color: #dc2626;
-            font-size: 2.2rem;
-            margin-bottom: 1.5rem;
-            border-bottom: 4px solid #ef4444;
-            padding-bottom: 0.5rem;
+            color: #1a1a1a;
+            font-size: 2.6rem;
+            margin-bottom: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #3498db, #2ecc71);
+            border-radius: 2px;
         }
 
         .hero {
             text-align: center;
-            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 5rem 3rem;
+            border: none;
         }
 
         .hero-content {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 3rem;
+            gap: 4rem;
             flex-wrap: wrap;
-            position: relative;
-            z-index: 1;
         }
 
         .hero-image {
@@ -129,40 +150,42 @@
             height: 220px;
             border-radius: 50%;
             object-fit: cover;
-            border: 6px solid white;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            border: 5px solid white;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            transition: transform 0.4s ease;
         }
 
-        .hero-text h1 {
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        .hero-image:hover {
+            transform: scale(1.08);
         }
 
         .hero p {
             font-size: 1.3rem;
             margin: 1rem 0;
+            color: #555;
         }
 
         .subtitle {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 600;
             margin-top: 0.5rem;
+            color: #3498db;
         }
 
         .about-content {
             display: flex;
             flex-direction: column;
-            gap: 4rem;
+            gap: 5rem;
         }
 
         .about-section {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 4rem;
             align-items: center;
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease, transform 0.8s ease;
+            transform: translateY(40px);
+            transition: opacity 1s ease, transform 1s ease;
         }
 
         .about-section.visible {
@@ -178,56 +201,60 @@
             direction: ltr;
         }
 
-        .about-text-section {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
         .about-text {
-            font-size: 1.3rem;
-            color: #475569;
+            font-size: 1.25rem;
+            color: #555;
             line-height: 1.9;
+            font-weight: 400;
         }
 
         .about-image {
             width: 100%;
-            height: 400px;
+            height: 450px;
             object-fit: cover;
             border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .about-image:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
         }
 
         .experience-item, .reference-item {
-            margin: 2rem 0;
-            padding: 2rem;
-            background: linear-gradient(to right, #f8fafc 0%, #f1f5f9 100%);
-            border-left: 5px solid #ef4444;
-            border-radius: 12px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            margin: 2.5rem 0;
+            padding: 2.5rem;
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            border-radius: 16px;
+            transition: all 0.3s ease;
         }
 
         .experience-item:hover, .reference-item:hover {
-            transform: translateX(10px);
-            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.2);
+            transform: translateX(12px);
+            background: #f0f4f8;
+            box-shadow: 0 8px 30px rgba(52, 152, 219, 0.15);
         }
 
         .experience-item h3, .reference-item h3 {
-            color: #dc2626;
-            font-size: 1.6rem;
+            color: #1a1a1a;
+            font-size: 1.8rem;
             margin-bottom: 0.5rem;
+            font-weight: 700;
         }
 
         .experience-item .company {
-            color: #ef4444;
-            font-weight: 600;
-            font-size: 1.1rem;
+            color: #3498db;
+            font-weight: 700;
+            font-size: 1.2rem;
         }
 
         .experience-item .date {
-            color: #64748b;
+            color: #7f8c8d;
             font-style: italic;
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
         }
 
         .experience-item ul {
@@ -236,88 +263,115 @@
         }
 
         .experience-item li {
-            margin: 0.5rem 0;
-            color: #475569;
+            margin: 0.8rem 0;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .reference-item p {
+            color: #555;
+            line-height: 1.8;
+            margin: 1rem 0;
+            font-size: 1.1rem;
+        }
+
+        .reference-item strong {
+            color: #2c3e50;
         }
 
         .skills {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
-            margin-top: 1.5rem;
+            margin-top: 2rem;
         }
 
         .skill-tag {
-            background: linear-gradient(135deg, #dc2626 0%, #ef4444 100%);
-            color: white;
-            padding: 0.6rem 1.2rem;
+            background: white;
+            color: #3498db;
+            padding: 0.75rem 1.5rem;
             border-radius: 25px;
-            font-size: 0.95rem;
-            box-shadow: 0 3px 10px rgba(220, 38, 38, 0.3);
-            transition: transform 0.2s;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 2px solid #e8f4f8;
+            transition: all 0.3s ease;
+            cursor: default;
         }
 
         .skill-tag:hover {
-            transform: translateY(-2px);
+            transform: translateY(-4px);
+            background: #3498db;
+            color: white;
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
         }
 
         .contact-info {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
+            margin-top: 2.5rem;
         }
 
         .contact-item {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1.5rem;
-            background: linear-gradient(to right, #f8fafc 0%, #f1f5f9 100%);
-            border-radius: 12px;
-            transition: transform 0.3s;
+            gap: 1.5rem;
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 16px;
+            border: 2px solid #e8f4f8;
+            transition: all 0.3s ease;
         }
 
         .contact-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(220, 38, 38, 0.2);
+            transform: translateY(-6px);
+            background: white;
+            border-color: #3498db;
+            box-shadow: 0 12px 35px rgba(52, 152, 219, 0.15);
         }
 
         .contact-item svg {
-            width: 28px;
-            height: 28px;
-            fill: #ef4444;
+            width: 32px;
+            height: 32px;
+            fill: #3498db;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-item:hover svg {
+            transform: scale(1.1);
         }
 
         .contact-item a {
-            color: #dc2626;
+            color: #555;
             text-decoration: none;
             font-weight: 500;
+            transition: color 0.3s;
         }
 
         .contact-item a:hover {
-            color: #ef4444;
-            text-decoration: underline;
+            color: #3498db;
         }
 
-        .about-text {
-            font-size: 1.3rem;
-            color: #475569;
-            line-height: 1.9;
+        .contact-item strong {
+            color: #2c3e50;
         }
 
         @media (max-width: 768px) {
             nav ul {
                 flex-wrap: wrap;
-                gap: 1rem;
+                gap: 1.5rem;
             }
 
             h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
+            }
+
+            h2 {
+                font-size: 2rem;
             }
 
             section {
-                padding: 2rem 1.5rem;
+                padding: 2.5rem 2rem;
             }
 
             .hero-content {
@@ -326,6 +380,7 @@
 
             .about-section {
                 grid-template-columns: 1fr;
+                gap: 2.5rem;
             }
 
             .about-section.reverse {
@@ -333,37 +388,23 @@
             }
 
             .about-image {
-                height: 300px;
+                height: 350px;
             }
 
-            .photo-gallery {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1rem;
-            }
-
-            .photo-gallery img {
-                width: 100%;
-                height: 200px;
-                object-fit: cover;
-                border-radius: 15px;
-                box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-                transition: transform 0.3s, box-shadow 0.3s;
-            }
-
-            .photo-gallery img:hover {
-                transform: translateY(-5px) scale(1.02);
-                box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+            .about-text {
+                font-size: 1.15rem;
             }
         }
     </style>
 </head>
 <body>
-            <nav>
+    <nav>
         <ul>
             <li><a href="#about">About Me</a></li>
+            <li><a href="#interests">Interests</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#experience">Experience</a></li>
+            <li><a href="#certifications">Certifications</a></li>
             <li><a href="#references">References</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
@@ -409,13 +450,26 @@
                     <div class="about-text-section">
                         <p class="about-text">When I'm not designing low voltage systems or optimizing data center infrastructure, you'll find me on the golf course, in the gym, or tinkering with the latest tech. I'm passionate about continuous improvement... whether that's in my career, my golf swing, or my mile PR. I thrive in collaborative environments and love working with teams that push each other to be better every day.</p>
                     </div>
-                    <img src="golf.png" alt="golf trip with friends" class="about-image">
+                    <img src="golf.png" alt="Golf trip with friends" class="about-image">
                 </div>
             </div>
         </section>
 
+        <section id="interests">
+            <h2>Interests & Career Goals</h2>
+            <div class="about-text" style="max-width: 900px; margin: 0 auto;">
+                <p style="margin-bottom: 1.5rem;">While I'm currently working as a Data Engineer, I've discovered something unexpected about myself through a side project that's changed how I think about my career. After graduating, I failed the FE exam on my first attempt. Instead of getting discouraged, I found Wasim Asghar's Study for FE, a SaaS platform that helped me pass on my second try.</p>
+                
+                <p style="margin-bottom: 1.5rem;">I was so impressed by how the right solution at the right time completely changed my outcome that I reached out to Wasim directly, offering to work for free just to learn. What started as curiosity turned into a partnership where I conduct competitive analysis, SEO audits, and sales strategy work for Study for FE.</p>
+                
+                <p style="margin-bottom: 1.5rem;">But the part that really surprised me was working with students during onboarding. Understanding their challenges, talking through their goals, and helping them find the right solution became my favorite part of the week. That's when I realized something important: I genuinely enjoy working with people, understanding their problems, and helping them find solutions.</p>
+                
+                <p>So while I'm building my technical career, I'm also exploring opportunities where I can combine my engineering background with this newfound interest in working directly with people. Whether that's in technical sales, solutions engineering, or customer success, I'm excited to find a role where I can use both my technical skills and my passion for helping people solve problems.</p>
+            </div>
+        </section>
+
         <section id="skills">
-            <h2>Core Skills & Expertise</h2>
+            <h2>Core Skills</h2>
             <div class="skills">
                 <span class="skill-tag">Electrical Design</span>
                 <span class="skill-tag">Revit & AutoCAD</span>
@@ -423,9 +477,12 @@
                 <span class="skill-tag">Low Voltage Systems</span>
                 <span class="skill-tag">Project Management</span>
                 <span class="skill-tag">Data Centers</span>
+                <span class="skill-tag">Customer Onboarding</span>
                 <span class="skill-tag">SEO & Strategy</span>
+                <span class="skill-tag">Competitive Analysis</span>
                 <span class="skill-tag">Problem Solving</span>
                 <span class="skill-tag">Team Leadership</span>
+                <span class="skill-tag">Technical Communication</span>
             </div>
         </section>
 
@@ -458,6 +515,7 @@
                 <ul>
                     <li>Collaborated with the founder of Study for FE, a national SaaS based education platform serving thousands of engineering students preparing for professional licensure exams</li>
                     <li>Led SEO and competitive market research to identify high impact keywords, content gaps, and optimization strategies that improved visibility and lead conversion</li>
+                    <li>Conducted customer onboarding consultations to help students assess their needs and find the right study package for their goals</li>
                     <li>Strengthened sales performance by improving student onboarding processes and implementing AI driven lead nurture strategies that kept prospects engaged throughout the funnel</li>
                 </ul>
                 <div class="skills">
@@ -465,6 +523,7 @@
                     <span class="skill-tag">Market Research</span>
                     <span class="skill-tag">AI Tools</span>
                     <span class="skill-tag">SaaS Analytics</span>
+                    <span class="skill-tag">Customer Onboarding</span>
                     <span class="skill-tag">Sales Optimization</span>
                 </div>
             </div>
@@ -506,31 +565,51 @@
             </div>
         </section>
 
+        <section id="certifications">
+            <h2>Licenses & Certifications</h2>
+            
+            <div class="experience-item" style="display: flex; align-items: center; gap: 2rem;">
+                <img src="lapels-logo.png" alt="LAPELS Logo" style="width: 80px; height: 80px; object-fit: contain; flex-shrink: 0;">
+                <div style="flex: 1;">
+                    <h3>Engineer In Training (EIT)</h3>
+                    <div class="company">Louisiana Professional Engineering and Land Surveying Board (LAPELS)</div>
+                    <div class="date">Issued July 2025</div>
+                </div>
+            </div>
+
+            <div class="experience-item" style="display: flex; align-items: center; gap: 2rem;">
+                <img src="ncees-logo.png" alt="NCEES Logo" style="width: 80px; height: 80px; object-fit: contain; flex-shrink: 0;">
+                <div style="flex: 1;">
+                    <h3>FE Exam</h3>
+                    <div class="company">NCEES</div>
+                    <div class="date">Passed July 2025</div>
+                </div>
+            </div>
+        </section>
+
         <section id="references">
             <h2>Professional References</h2>
             
             <div class="reference-item">
-                <h3>Wasim Asghar</h3>
-                <p><strong>Founder, StudyForFE</strong></p>
-                <p>"Connor first reached out to me offering to work for free just to gain experience in sales and marketing. From the start, his initiative stood out. What began as a simple learning opportunity quickly turned into something much bigger. Connor now contributes on multiple fronts, from developing automation systems to helping shape marketing strategy and improving overall operations.</p>
-                <p>He's the kind of person who figures things out quickly, takes ownership, and always brings a positive, solutions oriented attitude. Connor's curiosity and drive make him a pleasure to work with, and it's been great watching him grow into someone who adds real value to every project he touches."</p>
+                <p>"He's the kind of person who figures things out quickly, takes ownership, and always brings a positive, solutions oriented attitude."
+                </p>
+            <i><strong>- Wasim Asghar, Founder of StudyForFE</strong></i>
             </div>
 
             <div class="reference-item">
-                <h3>Dave Giurintano</h3>
-                <p><strong>LSU Capstone Professor</strong></p>
                 <p>"Mr. Regard has impressed me as a hard worker and someone who is extremely flexible and wise in a time of crisis. I have no doubt that he will thrive in any of his future endeavors!"</p>
+            <i><strong>- Dave Giurintano, LSU Capstone Professor</strong></i>
             </div>
 
             <div class="reference-item">
                 <h3>Additional References</h3>
-                <p>Additional professional references from Telios and Olin Corporation leadership are available upon request. I'm happy to connect you with supervisors and colleagues who can speak to my technical abilities, work ethic, and collaborative approach to engineering challenges.</p>
+                <p>Additional professional references from Telios and Olin Corporation leadership are available upon request. I'm happy to connect you with supervisors and colleagues who can speak to my technical abilities, communication skills, and client focused approach.</p>
             </div>
         </section>
 
         <section id="contact">
             <h2>Get In Touch</h2>
-            <p class="about-text">I'm always interested in connecting with fellow engineers, potential collaborators, or anyone who wants to talk about electrical systems, tech, or the best golf courses in Dallas. Feel free to reach out!</p>
+            <p class="about-text" style="max-width: 800px; margin-bottom: 2rem;">I'm always interested in connecting with fellow engineers, potential collaborators, or anyone who wants to talk about electrical systems, tech, or the best golf courses in Dallas. If you're looking for someone who combines technical expertise with a genuine interest in helping people, let's connect!</p>
             
             <div class="contact-info">
                 <div class="contact-item">
