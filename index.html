@@ -23,10 +23,7 @@
             background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
             padding: 1.5rem 2rem;
-            position: fixed;
             width: 100%;
-            top: 0;
-            z-index: 1000;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
         }
 
@@ -71,7 +68,7 @@
         .container {
             max-width: 1300px;
             margin: 0 auto;
-            padding: 5rem 3rem 3rem;
+            padding: 2rem 3rem 3rem;
         }
 
         section {
@@ -359,28 +356,48 @@
         @media (max-width: 768px) {
             nav ul {
                 flex-wrap: wrap;
-                gap: 1.5rem;
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            nav {
+                padding: 1rem 1rem;
             }
 
             h1 {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
 
             h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
 
             section {
-                padding: 2.5rem 2rem;
+                padding: 2rem 1.5rem;
+                margin: 2rem 0;
+            }
+
+            .container {
+                padding: 1rem 1rem 2rem;
+            }
+
+            .hero {
+                padding: 3rem 2rem;
             }
 
             .hero-content {
                 flex-direction: column;
+                gap: 2rem;
+            }
+
+            .hero-image {
+                width: 180px;
+                height: 180px;
             }
 
             .about-section {
                 grid-template-columns: 1fr;
-                gap: 2.5rem;
+                gap: 2rem;
             }
 
             .about-section.reverse {
@@ -388,11 +405,33 @@
             }
 
             .about-image {
-                height: 350px;
+                height: 300px;
+                width: 100%;
             }
 
             .about-text {
-                font-size: 1.15rem;
+                font-size: 1.1rem;
+            }
+
+            .experience-item, .reference-item {
+                padding: 1.5rem;
+            }
+
+            .experience-item h3, .reference-item h3 {
+                font-size: 1.4rem;
+            }
+
+            .skills {
+                gap: 0.8rem;
+            }
+
+            .skill-tag {
+                font-size: 0.9rem;
+                padding: 0.6rem 1.2rem;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -591,14 +630,15 @@
             <h2>Professional References</h2>
             
             <div class="reference-item">
-                <p>"He's the kind of person who figures things out quickly, takes ownership, and always brings a positive, solutions oriented attitude."
-                </p>
-            <i><strong>- Wasim Asghar, Founder of StudyForFE</strong></i>
+                <h3>Wasim Asghar</h3>
+                <p><strong>Founder, StudyForFE</strong></p>
+                <p>"He's the kind of person who figures things out quickly, takes ownership, and always brings a positive, solutions oriented attitude."</p>
             </div>
 
             <div class="reference-item">
+                <h3>Dave Giurintano</h3>
+                <p><strong>LSU Capstone Professor</strong></p>
                 <p>"Mr. Regard has impressed me as a hard worker and someone who is extremely flexible and wise in a time of crisis. I have no doubt that he will thrive in any of his future endeavors!"</p>
-            <i><strong>- Dave Giurintano, LSU Capstone Professor</strong></i>
             </div>
 
             <div class="reference-item">
