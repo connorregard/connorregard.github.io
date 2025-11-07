@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connor Regard, EIT - Professional Portfolio</title>
+    <title>Connor Regard - Professional Portfolio</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%233498db'/><text x='50' y='50' font-family='Arial, sans-serif' font-size='35' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='central'>CR</text></svg>">
     <style>
         * {
             margin: 0;
@@ -353,6 +354,105 @@
             color: #2c3e50;
         }
 
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .project-card {
+            background: #f8f9fa;
+            border-radius: 16px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .project-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 35px rgba(52, 152, 219, 0.2);
+        }
+
+        .project-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-card h3 {
+            color: #1a1a1a;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .project-tag {
+            background: white;
+            color: #3498db;
+            padding: 0.4rem 0.9rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 2px solid #e8f4f8;
+        }
+
+        .project-description {
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #2980b9;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #3498db;
+            border: 2px solid #3498db;
+        }
+
+        .btn-secondary:hover {
+            background: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+
         @media (max-width: 768px) {
             nav ul {
                 flex-wrap: wrap;
@@ -433,6 +533,26 @@
             .contact-info {
                 grid-template-columns: 1fr;
             }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .project-image {
+                height: 200px;
+            }
+
+            .project-content {
+                padding: 1.5rem;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .project-btn {
+                justify-content: center;
+            }
         }
     </style>
 </head>
@@ -442,6 +562,7 @@
             <li><a href="#about">About Me</a></li>
             <li><a href="#interests">Interests</a></li>
             <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#certifications">Certifications</a></li>
             <li><a href="#references">References</a></li>
@@ -454,7 +575,12 @@
             <div class="hero-content">
                 <img src="headshot.jpg" alt="Connor Regard Professional Photo" class="hero-image">
                 <div class="hero-text">
-                    <h1>Connor Regard, EIT</h1>
+                    <h1>
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#3498db" stroke-width="2" style="display: inline-block; vertical-align: middle; margin-right: 15px;">
+                            <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                        Connor Regard, EIT
+                    </h1>
                     <p class="subtitle">Data Engineer | Electrical Engineer</p>
                     <p>LSU Electrical Engineering Graduate | Dallas, TX</p>
                 </div>
@@ -522,6 +648,83 @@
                 <span class="skill-tag">Problem Solving</span>
                 <span class="skill-tag">Team Leadership</span>
                 <span class="skill-tag">Technical Communication</span>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                
+                <div class="project-card">
+                    <img src="friends standing next to robot.png" alt="Automated Bartender" class="project-image">
+                    <div class="project-content">
+                        <h3>Automated Bartender</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Programming (C, Ladder Logic)</span>
+                            <span class="project-tag">Collaboration & Team Building</span>
+                            <span class="project-tag">Presentation</span>
+                            <span class="project-tag">2D and 3D Modeling</span>
+                            <span class="project-tag">Manufacturing</span>
+                        </div>
+                        <p class="project-description">An automated bartender system built as my LSU senior capstone project. Designed and programmed a PLC controlled system with HMI touchscreen interface to mix and dispense custom drinks automatically.</p>
+                        <div class="project-links">
+                            <a href="https://www.youtube.com/shorts/4YvY3FrMQ0c" class="project-btn btn-primary">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                                More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="BNR Homepage.png" alt="BNR Strategies Home Page" class="project-image">
+                    <div class="project-content">
+                        <h3>Freelance Marketing/AI Agency</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Sales Strategy</span>
+                            <span class="project-tag">CRM (GoHighLevel)</span>
+                            <span class="project-tag">Multi-step Automations</span>
+                            <span class="project-tag">API webhooks</span>
+                            <span class="project-tag">AI Voice/Chatbot Integration</span>
+                            <span class="project-tag">Lead Qualification</span>
+                        </div>
+                        <p class="project-description">Developed and deployed a proof-of-concept AI-powered client acquisition system for local service businesses, integrating landing pages, follow-up automations, and booking flows using GoHighLevel.
+The project was designed to test how agent-style AI (chat widgets, instant replies, lead routing) could improve sales efficiency and reduce manual workload across sectors like med spas and landscaping.</p>
+                        <div class="project-links">
+                            <a href="https://bnrstrategies.com" class="project-btn btn-secondary">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                                Details
+                            </a>
+                            <a href="https://bnrstrategies.com/ai-test-drive" class="project-btn btn-primary">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                                Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop" alt="Study for FE Analytics" class="project-image">
+                    <div class="project-content">
+                        <h3>SaaS Growth & Analytics</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">SEO Strategy</span>
+                            <span class="project-tag">AI Tools</span>
+                            <span class="project-tag">SaaS Analytics</span>
+                            <span class="project-tag">Competitor Analysis</span>
+                            <span class="project-tag">Copy Development</span>
+                            <span class="project-tag">Student Onboarding</span>
+                        </div>
+                        <p class="project-description">Volunteered to partner with Study for FE at no cost to explore how AI, SEO, and funnel strategy could improve customer acquisition and onboarding. Conducted in-depth audits on user experience, competitor positioning, and sales workflows, applying automation and analytics to deliver actionable insights. The project served as a proof of concept in using tech-driven solutions to solve real business problems while building firsthand experience in SaaS growth strategy.</p>
+                        <div class="project-links">
+                            <a href="https://drive.google.com/drive/folders/10ByRZx57RPIpC82RybW98007U8ljbwPC?usp=drive_link" class="project-btn btn-secondary">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                                Case Studies
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </section>
 
