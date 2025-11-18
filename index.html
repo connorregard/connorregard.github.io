@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connor Regard, EIT - Professional Portfolio</title>
+    <title>Connor Regard - Professional Portfolio</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%233498db'/><text x='50' y='50' font-family='Arial, sans-serif' font-size='35' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='central'>CR</text></svg>">
     <style>
         * {
@@ -21,147 +21,97 @@
             position: relative;
         }
 
-        .floating-shapes {
+        /* Sidebar Navigation */
+        .sidebar-nav {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
+            left: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1000;
+            padding: 2rem 0;
         }
 
-        .shape {
-            position: absolute;
-            background: rgba(52, 152, 219, 0.1);
-            border-radius: 50%;
-            animation: float 20s infinite ease-in-out;
-        }
-
-        .shape:nth-child(1) {
-            width: 80px;
-            height: 80px;
-            left: 10%;
-            top: 20%;
-            animation-delay: 0s;
-            animation-duration: 25s;
-        }
-
-        .shape:nth-child(2) {
-            width: 60px;
-            height: 60px;
-            left: 80%;
-            top: 40%;
-            animation-delay: 2s;
-            animation-duration: 20s;
-        }
-
-        .shape:nth-child(3) {
-            width: 100px;
-            height: 100px;
-            left: 50%;
-            top: 60%;
-            animation-delay: 4s;
-            animation-duration: 30s;
-        }
-
-        .shape:nth-child(4) {
-            width: 70px;
-            height: 70px;
-            left: 20%;
-            top: 80%;
-            animation-delay: 1s;
-            animation-duration: 22s;
-        }
-
-        .shape:nth-child(5) {
-            width: 90px;
-            height: 90px;
-            left: 70%;
-            top: 10%;
-            animation-delay: 3s;
-            animation-duration: 28s;
-        }
-
-        .shape:nth-child(6) {
-            width: 50px;
-            height: 50px;
-            left: 40%;
-            top: 30%;
-            animation-delay: 5s;
-            animation-duration: 18s;
-        }
-
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0) translateX(0) rotate(0deg);
-                opacity: 0.3;
-            }
-            25% {
-                transform: translateY(-30px) translateX(20px) rotate(90deg);
-                opacity: 0.5;
-            }
-            50% {
-                transform: translateY(-60px) translateX(-20px) rotate(180deg);
-                opacity: 0.3;
-            }
-            75% {
-                transform: translateY(-30px) translateX(-30px) rotate(270deg);
-                opacity: 0.5;
-            }
-        }
-
-        nav {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            padding: 1.5rem 2rem;
-            width: 100%;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
-        }
-
-        nav ul {
+        .sidebar-nav ul {
             list-style: none;
             display: flex;
-            justify-content: center;
-            gap: 3rem;
+            flex-direction: column;
+            gap: 0.5rem;
         }
 
-        nav a {
-            text-decoration: none;
-            color: #2c3e50;
-            font-weight: 600;
-            font-size: 1rem;
-            letter-spacing: 0.3px;
+        .sidebar-nav li {
             position: relative;
-            transition: color 0.3s ease;
         }
 
-        nav a::after {
+        .sidebar-nav a {
+            text-decoration: none;
+            color: #95a5a6;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0 25px 25px 0;
+            position: relative;
+            background: transparent;
+        }
+
+        .sidebar-nav a::before {
             content: '';
             position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 3px;
-            background: #3498db;
-            border-radius: 2px;
-            transition: width 0.3s ease;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 0%;
+            background: linear-gradient(180deg, #3498db, #2ecc71);
+            border-radius: 0 4px 4px 0;
+            transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        nav a:hover {
+        .sidebar-nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(52, 152, 219, 0.1), transparent);
+            border-radius: 0 25px 25px 0;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+
+        .sidebar-nav a:hover {
             color: #3498db;
+            padding-left: 2rem;
         }
 
-        nav a:hover::after {
+        .sidebar-nav a:hover::after {
             width: 100%;
+        }
+
+        .sidebar-nav a.active {
+            color: #3498db;
+            padding-left: 2rem;
+            font-weight: 700;
+        }
+
+        .sidebar-nav a.active::before {
+            height: 100%;
+        }
+
+        .sidebar-nav a.active::after {
+            width: 100%;
+            background: linear-gradient(90deg, rgba(52, 152, 219, 0.15), transparent);
         }
 
         .container {
             max-width: 1300px;
             margin: 0 auto;
             padding: 2rem 3rem 3rem;
+            margin-left: 280px;
             position: relative;
             z-index: 1;
         }
@@ -174,6 +124,8 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
             animation: fadeInUp 0.7s ease;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            z-index: 1;
         }
 
         section:hover {
@@ -548,14 +500,69 @@
         }
 
         @media (max-width: 768px) {
-            nav ul {
-                flex-wrap: wrap;
-                gap: 1rem;
-                font-size: 0.9rem;
+            .sidebar-nav {
+                position: fixed;
+                left: 0;
+                top: auto;
+                bottom: 0;
+                transform: none;
+                width: 100%;
+                padding: 1rem;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
+                border-radius: 0;
             }
 
-            nav {
-                padding: 1rem 1rem;
+            .sidebar-nav ul {
+                flex-direction: row;
+                gap: 0.5rem;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+                padding-bottom: 0.5rem;
+            }
+
+            .sidebar-nav ul::-webkit-scrollbar {
+                height: 4px;
+            }
+
+            .sidebar-nav ul::-webkit-scrollbar-track {
+                background: rgba(52, 152, 219, 0.1);
+                border-radius: 2px;
+            }
+
+            .sidebar-nav ul::-webkit-scrollbar-thumb {
+                background: #3498db;
+                border-radius: 2px;
+            }
+
+            .sidebar-nav a {
+                font-size: 0.85rem;
+                padding: 0.6rem 1.2rem;
+                white-space: nowrap;
+                border-radius: 20px;
+            }
+
+            .sidebar-nav a::before {
+                display: none;
+            }
+
+            .sidebar-nav a::after {
+                border-radius: 20px;
+            }
+
+            .sidebar-nav a:hover,
+            .sidebar-nav a.active {
+                padding-left: 1.2rem;
+            }
+
+            .sidebar-nav a.active {
+                background: rgba(52, 152, 219, 0.15);
+            }
+
+            .container {
+                margin-left: 0;
+                padding: 1rem 1rem 5rem;
             }
 
             h1 {
@@ -651,25 +658,17 @@
     </style>
 </head>
 <body>
-    <div class="floating-shapes">
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-        <div class="shape"></div>
-    </div>
-    
-    <nav>
+    <!-- Sidebar Navigation -->
+    <nav class="sidebar-nav">
         <ul>
-            <li><a href="#about">About Me</a></li>
-            <li><a href="#interests">Interests</a></li>
-            <li><a href="#skills">Skills</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#certifications">Certifications</a></li>
-            <li><a href="#references">References</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <li><a href="#about" class="nav-link">About Me</a></li>
+            <li><a href="#interests" class="nav-link">Interests</a></li>
+            <li><a href="#experience" class="nav-link">Experience</a></li>
+            <li><a href="#projects" class="nav-link">Projects</a></li>
+            <li><a href="#skills" class="nav-link">Skills</a></li>
+            <li><a href="#certifications" class="nav-link">Certifications</a></li>
+            <li><a href="#references" class="nav-link">References</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
     </nav>
 
@@ -731,96 +730,7 @@
             </div>
         </section>
 
-        <section id="skills">
-            <h2>Core Skills</h2>
-            <div class="skills">
-                <span class="skill-tag">Electrical Design</span>
-                <span class="skill-tag">Revit & AutoCAD</span>
-                <span class="skill-tag">PLC Programming</span>
-                <span class="skill-tag">Low Voltage Systems</span>
-                <span class="skill-tag">Project Management</span>
-                <span class="skill-tag">Data Centers</span>
-                <span class="skill-tag">Customer Onboarding</span>
-                <span class="skill-tag">SEO & Strategy</span>
-                <span class="skill-tag">Competitive Analysis</span>
-                <span class="skill-tag">Problem Solving</span>
-                <span class="skill-tag">Team Leadership</span>
-                <span class="skill-tag">Technical Communication</span>
-            </div>
-        </section>
-
-        <section id="projects">
-            <h2>Projects</h2>
-            <div class="projects-grid">
-                
-                <div class="project-card">
-                    <img src="friends standing next to robot.png" alt="Automated Bartender" class="project-image">
-                    <div class="project-content">
-                        <h3>Automated Bartender</h3>
-                        <div class="project-tags">
-                            <span class="project-tag">PLC Programming</span>
-                            <span class="project-tag">Allen Bradley</span>
-                            <span class="project-tag">AutoCAD</span>
-                            <span class="project-tag">SolidWorks</span>
-                        </div>
-                        <p class="project-description">An automated bartender system built as my LSU senior capstone project. Designed and programmed a PLC controlled system with HMI touchscreen interface to mix and dispense custom drinks automatically.</p>
-                        <div class="project-links">
-                            <a href="#" class="project-btn btn-primary">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-                                Live Demo
-                            </a>
-                            <a href="#" class="project-btn btn-secondary">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0l4.6-4.6-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"/></svg>
-                                Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=500&h=300&fit=crop" alt="Flow Meter Redundancy" class="project-image">
-                    <div class="project-content">
-                        <h3>Flow Meter Redundancy System</h3>
-                        <div class="project-tags">
-                            <span class="project-tag">PLC Programming</span>
-                            <span class="project-tag">DCS</span>
-                            <span class="project-tag">eMOC</span>
-                            <span class="project-tag">SAP</span>
-                        </div>
-                        <p class="project-description">Implemented flow meter redundancy in a boiler's natural gas line at Olin Corporation to comply with state air permit regulations and enable preventive maintenance without interrupting operations.</p>
-                        <div class="project-links">
-                            <a href="#" class="project-btn btn-secondary">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-                                Details
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="project-card">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&h=300&fit=crop" alt="Study for FE Analytics" class="project-image">
-                    <div class="project-content">
-                        <h3>SaaS Growth & Analytics</h3>
-                        <div class="project-tags">
-                            <span class="project-tag">SEO Strategy</span>
-                            <span class="project-tag">AI Tools</span>
-                            <span class="project-tag">SaaS Analytics</span>
-                            <span class="project-tag">Competitor Analysis</span>
-                        </div>
-                        <p class="project-description">Applied AI driven automation to enhance customer acquisition and onboarding for Study for FE, contributing to stronger sales performance and product engagement through competitive analysis and funnel optimization.</p>
-                        <div class="project-links">
-                            <a href="#" class="project-btn btn-secondary">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-                                Case Study
-                            </a>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section id="experience">
+         <section id="experience">
             <h2>Professional Experience</h2>
             
             <div class="experience-item">
@@ -833,12 +743,13 @@
                     <li>Collaborate directly with clients, contractors, and internal teams to resolve field coordination issues and deliver constructible low voltage solutions including technology, AV, and security systems</li>
                 </ul>
                 <div class="skills">
-                    <span class="skill-tag">Revit</span>
-                    <span class="skill-tag">AutoCAD</span>
+                    <span class="skill-tag">Team Building & Collaboration</span>
+                    <span class="skill-tag">Client Relations</span>
+                    <span class="skill-tag">Project Coordination</span>
+                    <span class="skill-tag">Revit & AutoCAD</span>
+                    <span class="skill-tag">Electrical Engineering</span>
                     <span class="skill-tag">Low Voltage Design</span>
                     <span class="skill-tag">Data Centers</span>
-                    <span class="skill-tag">Project Coordination</span>
-                    <span class="skill-tag">Client Relations</span>
                 </div>
             </div>
 
@@ -898,6 +809,106 @@
                 </div>
             </div>
         </section>
+<section id="projects">
+            <h2>Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <img src="BNR Homepage.png" alt="BNR Strategies Home Page" class="project-image">
+                    <div class="project-content">
+                        <h3>Freelance Marketing/AI Agency</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Sales Strategy</span>
+                            <span class="project-tag">Funnel Optimization</span>
+                             <span class="project-tag">Cold Calling</span>
+                            <span class="project-tag">CRM (GoHighLevel)</span>
+                            <span class="project-tag">Multi-step Automations</span>
+                            <span class="project-tag">API webhooks</span>
+                             <span class="project-tag">LLM-as-a-service (Anthropic, OpenAI)</span>
+                            <span class="project-tag">AI Voice/Chatbot Integration</span>
+                            <span class="project-tag">Lead Qualification</span>
+                        </div>
+                        <p class="project-description">Developed and deployed a proof-of-concept AI-powered client acquisition system for local service businesses, integrating landing pages, follow-up automations, and booking flows using GoHighLevel.
+The project was designed to test how agent-style AI (chat widgets, instant replies, lead routing) could improve sales efficiency and reduce manual workload across both tangible and SaaS-based systems.</p>
+                        <div class="project-links">
+                            <a href="https://bnrstrategies.com/ai-test-drive" class="project-btn btn-primary">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                                Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <img src="studyforfe.png" alt="Study for FE Analytics" class="project-image">
+                    <div class="project-content">
+                        <h3>SaaS Growth & Analytics</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">SEO Strategy</span>
+                            <span class="project-tag">AI Tools</span>
+                            <span class="project-tag">Inbound Lead Management</span>
+                            <span class="project-tag">SaaS Analytics</span>
+                            <span class="project-tag">Competitor Analysis</span>
+                            <span class="project-tag">Copy Development</span>
+                            <span class="project-tag">Student Onboarding</span>
+                        </div>
+                        <p class="project-description">Volunteered to partner with Study for FE at no cost to explore how AI, SEO, and funnel strategy could improve customer acquisition and onboarding. Conducted in-depth audits on user experience, competitor positioning, and sales workflows, applying automation and analytics to deliver actionable insights. The project served as a proof of concept in using tech-driven solutions to solve real business problems while building firsthand experience in SaaS growth strategy.</p>
+                        <div class="project-links">
+                             <a href="https://www.studyforfe.com/?utm_source=google&utm_medium=cpc&utm_campaign=Orion-Search-Branding-16Mar2023&utm_campaignid=19820734788&utm_content=145677252846&utm_term=studyforfe&utm_device=c&gad_source=1&gad_campaignid=19820734788&gbraid=0AAAAAC146PekYwF1ytIN2FzOHv6Q2zMyy&gclid=CjwKCAiAw9vIBhBBEiwAraSAThOXVb8Uqa_p1tTXNfPJf-tdsOAw9BYUSMWl0YlHlkpuKluZs2TPNRoCZQgQAvD_BwE" class="project-btn btn-primary">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                                More
+                            </a>
+                            <a href="https://drive.google.com/drive/folders/10ByRZx57RPIpC82RybW98007U8ljbwPC?usp=drive_link" class="project-btn btn-secondary">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
+                                Case Studies
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <img src="friends standing next to robot.png" alt="Automated Bartender" class="project-image">
+                    <div class="project-content">
+                        <h3>Automated Bartender</h3>
+                        <div class="project-tags">
+                            <span class="project-tag">Programming (C, Ladder Logic)</span>
+                            <span class="project-tag">Collaboration & Team Building</span>
+                            <span class="project-tag">Presentation</span>
+                            <span class="project-tag">2D and 3D Modeling</span>
+                            <span class="project-tag">Manufacturing</span>
+                        </div>
+                        <p class="project-description">An automated bartender system built as my LSU senior capstone project. Designed and programmed a PLC controlled system with HMI touchscreen interface to mix and dispense custom drinks automatically.</p>
+                        <div class="project-links">
+                            <a href="https://github.com/connorregard/Automated-Bartender-LSU-Capstone-Project/blob/main/README.md" class="project-btn btn-primary">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
+                                More
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="skills">
+            <h2>Core Skills</h2>
+            <div class="skills">
+                <span class="skill-tag">Electrical Engineering</span>
+                <span class="skill-tag">Revit & AutoCAD</span>
+                <span class="skill-tag">PLC Programming</span>
+                <span class="skill-tag">Low Voltage Systems</span>
+                <span class="skill-tag">Project Management</span>
+                <span class="skill-tag">Team Leadership</span>
+                <span class="skill-tag">Data Centers</span>
+                <span class="skill-tag">Customer Onboarding</span>
+                <span class="skill-tag">SEO & Strategy</span>
+                <span class="skill-tag">Competitive Analysis</span>
+                <span class="skill-tag">Problem Solving</span>
+                <span class="skill-tag">Team Leadership</span>
+                <span class="skill-tag">Technical Communication</span>
+                <span class="skill-tag">Lead Nurturing</span>
+            </div>
+        </section>
+
+        
+       
 
         <section id="certifications">
             <h2>Licenses & Certifications</h2>
@@ -917,6 +928,15 @@
                     <h3>FE Exam</h3>
                     <div class="company">NCEES</div>
                     <div class="date">Passed July 2025</div>
+                </div>
+            </div>
+
+            <div class="experience-item" style="display: flex; align-items: center; gap: 2rem;">
+                <img src="databricks-badge.png" alt="Databricks Generative AI Fundamentals Badge" style="width: 80px; height: 80px; object-fit: contain; flex-shrink: 0;">
+                <div style="flex: 1;">
+                    <h3>Generative AI Fundamentals</h3>
+                    <div class="company">Databricks</div>
+                    <div class="date">Issued 2025</div>
                 </div>
             </div>
         </section>
@@ -984,13 +1004,40 @@
 
     <script>
         // Smooth scrolling for navigation links
-        document.querySelectorAll('nav a').forEach(anchor => {
+        document.querySelectorAll('.nav-link').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             });
         });
+
+        // Highlight active section in sidebar navigation
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        function highlightNavigation() {
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', highlightNavigation);
+        highlightNavigation(); // Call on page load
 
         // Animate About Me sections on scroll
         const aboutSections = document.querySelectorAll('.about-section');
