@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connor Regard - Professional Portfolio</title>
+    <title>Connor Regard - Engineering Portfolio</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%233498db'/><text x='50' y='50' font-family='Arial, sans-serif' font-size='35' font-weight='bold' fill='white' text-anchor='middle' dominant-baseline='central'>CR</text></svg>">
     <style>
         * {
@@ -12,417 +12,547 @@
             box-sizing: border-box;
         }
 
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --secondary: #10b981;
+            --dark: #0f172a;
+            --dark-light: #1e293b;
+            --gray: #64748b;
+            --light: #f1f5f9;
+            --white: #ffffff;
+        }
+
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: #2c3e50;
-            background: #f8f9fa;
-            overflow-x: hidden;
-            position: relative;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background: var(--dark);
         }
 
-        /* Sidebar Navigation */
-        .sidebar-nav {
+        /* Top Navigation Bar */
+        .top-nav {
             position: fixed;
-            left: 30px;
-            top: 50%;
-            transform: translateY(-50%);
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px);
             z-index: 1000;
-            padding: 2rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .sidebar-nav ul {
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--white);
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 0.5rem;
             list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--light);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: var(--white);
+            background: rgba(37, 99, 235, 0.2);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section - Full Width Split */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            margin-top: 70px;
+        }
+
+        .hero-left {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            justify-content: center;
+            padding: 4rem;
+            color: var(--white);
         }
 
-        .sidebar-nav li {
-            position: relative;
-        }
-
-        .sidebar-nav a {
-            text-decoration: none;
-            color: #95a5a6;
-            font-weight: 600;
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
             font-size: 0.9rem;
-            letter-spacing: 0.5px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            width: fit-content;
+        }
+
+        .hero-left h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+
+        .hero-description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.95;
+            margin-bottom: 2.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--primary);
+        }
+
+        .hero-right {
+            background: var(--dark-light);
             display: flex;
             align-items: center;
-            padding: 0.75rem 1.5rem;
-            border-radius: 0 25px 25px 0;
+            justify-content: center;
+            padding: 4rem;
             position: relative;
-            background: transparent;
+            overflow: hidden;
         }
 
-        .sidebar-nav a::before {
+        /* Halftone Background Columns */
+        .halftone-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            padding: 2rem;
+            z-index: 0;
+        }
+
+        .halftone-column {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            animation: slideColumn 20s linear infinite;
+        }
+
+        .halftone-column:nth-child(1) {
+            animation-duration: 25s;
+            animation-delay: 0s;
+        }
+
+        .halftone-column:nth-child(2) {
+            animation-duration: 30s;
+            animation-delay: -5s;
+            animation-direction: reverse;
+        }
+
+        .halftone-column:nth-child(3) {
+            animation-duration: 28s;
+            animation-delay: -10s;
+        }
+
+        .halftone-column:nth-child(4) {
+            animation-duration: 32s;
+            animation-delay: -15s;
+            animation-direction: reverse;
+        }
+
+        @keyframes slideColumn {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-50%);
+            }
+        }
+
+        .halftone-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 16px;
+            opacity: 0;
+            filter: grayscale(100%) contrast(150%);
+            mix-blend-mode: screen;
+            animation: fadeInOut 8s ease-in-out infinite;
+        }
+
+        .halftone-column:nth-child(1) .halftone-image:nth-child(1) { animation-delay: 0s; }
+        .halftone-column:nth-child(1) .halftone-image:nth-child(2) { animation-delay: 2s; }
+        .halftone-column:nth-child(1) .halftone-image:nth-child(3) { animation-delay: 4s; }
+
+        .halftone-column:nth-child(2) .halftone-image:nth-child(1) { animation-delay: 1s; }
+        .halftone-column:nth-child(2) .halftone-image:nth-child(2) { animation-delay: 3s; }
+        .halftone-column:nth-child(2) .halftone-image:nth-child(3) { animation-delay: 5s; }
+
+        .halftone-column:nth-child(3) .halftone-image:nth-child(1) { animation-delay: 1.5s; }
+        .halftone-column:nth-child(3) .halftone-image:nth-child(2) { animation-delay: 3.5s; }
+        .halftone-column:nth-child(3) .halftone-image:nth-child(3) { animation-delay: 5.5s; }
+
+        .halftone-column:nth-child(4) .halftone-image:nth-child(1) { animation-delay: 2.5s; }
+        .halftone-column:nth-child(4) .halftone-image:nth-child(2) { animation-delay: 4.5s; }
+        .halftone-column:nth-child(4) .halftone-image:nth-child(3) { animation-delay: 6.5s; }
+
+        @keyframes fadeInOut {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            25%, 75% {
+                opacity: 0.15;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.25;
+                transform: scale(1.02);
+            }
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            z-index: 1;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 30px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Main Content Area */
+        .content-wrapper {
+            background: var(--light);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        section {
+            margin: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* About Section - Card Grid */
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .about-card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 3rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .about-card img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-card h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .about-card p {
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 1.05rem;
+        }
+
+        /* Interests Section - Large Text Block */
+        .interests-content {
+            background: var(--dark);
+            color: var(--white);
+            padding: 5rem 4rem;
+            border-radius: 32px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .interests-content::before {
             content: '';
             position: absolute;
-            left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 0%;
-            background: linear-gradient(180deg, #3498db, #2ecc71);
-            border-radius: 0 4px 4px 0;
-            transition: height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(37, 99, 235, 0.1));
         }
 
-        .sidebar-nav a::after {
+        .interests-text {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+        }
+
+        .interests-text h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .interests-text p {
+            font-size: 1.15rem;
+            line-height: 2;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+        }
+
+        /* Experience Section - Timeline Style */
+        .experience-timeline {
+            position: relative;
+            padding-left: 3rem;
+        }
+
+        .experience-timeline::before {
             content: '';
             position: absolute;
             left: 0;
             top: 0;
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, rgba(52, 152, 219, 0.1), transparent);
-            border-radius: 0 25px 25px 0;
-            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: -1;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--primary), var(--secondary));
         }
 
-        .sidebar-nav a:hover {
-            color: #3498db;
+        .timeline-item {
+            position: relative;
+            margin-bottom: 3rem;
             padding-left: 2rem;
         }
 
-        .sidebar-nav a:hover::after {
-            width: 100%;
-        }
-
-        .sidebar-nav a.active {
-            color: #3498db;
-            padding-left: 2rem;
-            font-weight: 700;
-        }
-
-        .sidebar-nav a.active::before {
-            height: 100%;
-        }
-
-        .sidebar-nav a.active::after {
-            width: 100%;
-            background: linear-gradient(90deg, rgba(52, 152, 219, 0.15), transparent);
-        }
-
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-            padding: 2rem 3rem 3rem;
-            margin-left: 280px;
-            position: relative;
-            z-index: 1;
-        }
-
-        section {
-            background: white;
-            margin: 3rem 0;
-            padding: 4rem 3.5rem;
-            border-radius: 24px;
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.06);
-            animation: fadeInUp 0.7s ease;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            z-index: 1;
-        }
-
-        section:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        h1 {
-            color: #1a1a1a;
-            font-size: 4rem;
-            margin-bottom: 0.5rem;
-            text-align: center;
-            font-weight: 700;
-            letter-spacing: -1px;
-        }
-
-        h2 {
-            color: #1a1a1a;
-            font-size: 2.6rem;
-            margin-bottom: 2.5rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        h2::after {
+        .timeline-item::before {
             content: '';
             position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 4px;
-            background: linear-gradient(90deg, #3498db, #2ecc71);
-            border-radius: 2px;
-        }
-
-        .hero {
-            text-align: center;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            padding: 5rem 3rem;
-            border: none;
-        }
-
-        .hero-content {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 4rem;
-            flex-wrap: wrap;
-        }
-
-        .hero-image {
-            width: 220px;
-            height: 220px;
+            left: -3.5rem;
+            top: 0.5rem;
+            width: 16px;
+            height: 16px;
+            background: var(--primary);
             border-radius: 50%;
-            object-fit: cover;
-            border: 5px solid white;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
-            transition: transform 0.4s ease;
+            border: 4px solid var(--light);
+            box-shadow: 0 0 0 4px var(--primary);
         }
 
-        .hero-image:hover {
-            transform: scale(1.08);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            margin: 1rem 0;
-            color: #555;
-        }
-
-        .subtitle {
-            font-size: 1.6rem;
-            font-weight: 600;
-            margin-top: 0.5rem;
-            color: #3498db;
-        }
-
-        .about-content {
-            display: flex;
-            flex-direction: column;
-            gap: 5rem;
-        }
-
-        .about-section {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: opacity 1s ease, transform 1s ease;
-        }
-
-        .about-section.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .about-section.reverse {
-            direction: rtl;
-        }
-
-        .about-section.reverse > * {
-            direction: ltr;
-        }
-
-        .about-text {
-            font-size: 1.25rem;
-            color: #555;
-            line-height: 1.9;
-            font-weight: 400;
-        }
-
-        .about-image {
-            width: 100%;
-            height: 450px;
-            object-fit: cover;
-            border-radius: 20px;
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-
-        .about-image:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
-        }
-
-        .experience-item, .reference-item {
-            margin: 2.5rem 0;
+        .timeline-card {
+            background: var(--white);
             padding: 2.5rem;
-            background: #f8f9fa;
-            border-left: 4px solid #3498db;
-            border-radius: 16px;
+            border-radius: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
         }
 
-        .experience-item:hover, .reference-item:hover {
-            transform: translateX(12px);
-            background: #f0f4f8;
-            box-shadow: 0 8px 30px rgba(52, 152, 219, 0.15);
+        .timeline-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
         }
 
-        .experience-item h3, .reference-item h3 {
-            color: #1a1a1a;
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .timeline-title h3 {
+            font-size: 1.6rem;
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .timeline-company {
+            color: var(--primary);
             font-weight: 700;
-        }
-
-        .experience-item .company {
-            color: #3498db;
-            font-weight: 700;
-            font-size: 1.2rem;
-        }
-
-        .experience-item .date {
-            color: #7f8c8d;
-            font-style: italic;
-            margin-bottom: 1.2rem;
-            font-size: 1rem;
-        }
-
-        .experience-item ul {
-            margin-left: 1.5rem;
-            margin-top: 1rem;
-        }
-
-        .experience-item li {
-            margin: 0.8rem 0;
-            color: #555;
-            line-height: 1.7;
-        }
-
-        .reference-item p {
-            color: #555;
-            line-height: 1.8;
-            margin: 1rem 0;
             font-size: 1.1rem;
         }
 
-        .reference-item strong {
-            color: #2c3e50;
+        .timeline-date {
+            color: var(--gray);
+            font-size: 0.95rem;
+            font-weight: 500;
         }
 
-        .skills {
+        .timeline-content ul {
+            margin: 1.5rem 0;
+            padding-left: 1.5rem;
+        }
+
+        .timeline-content li {
+            margin: 0.8rem 0;
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        .tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 1rem;
-            margin-top: 2rem;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
         }
 
-        .skill-tag {
-            background: white;
-            color: #3498db;
-            padding: 0.75rem 1.5rem;
-            border-radius: 25px;
-            font-size: 1rem;
+        .tag {
+            background: var(--light);
+            color: var(--primary);
+            padding: 0.4rem 0.9rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
             font-weight: 600;
-            border: 2px solid #e8f4f8;
-            transition: all 0.3s ease;
-            cursor: default;
         }
 
-        .skill-tag:hover {
-            transform: translateY(-4px);
-            background: #3498db;
-            color: white;
-            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.3);
-        }
-
-        .contact-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-top: 2.5rem;
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            padding: 2rem;
-            background: #f8f9fa;
-            border-radius: 16px;
-            border: 2px solid #e8f4f8;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            transform: translateY(-6px);
-            background: white;
-            border-color: #3498db;
-            box-shadow: 0 12px 35px rgba(52, 152, 219, 0.15);
-        }
-
-        .contact-item svg {
-            width: 32px;
-            height: 32px;
-            fill: #3498db;
-            transition: transform 0.3s ease;
-        }
-
-        .contact-item:hover svg {
-            transform: scale(1.1);
-        }
-
-        .contact-item a {
-            color: #555;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .contact-item a:hover {
-            color: #3498db;
-        }
-
-        .contact-item strong {
-            color: #2c3e50;
-        }
-
+        /* Projects Section - Masonry Grid */
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 2rem;
-            margin-top: 2rem;
         }
 
         .project-card {
-            background: #f8f9fa;
-            border-radius: 16px;
+            background: var(--white);
+            border-radius: 24px;
             overflow: hidden;
-            transition: all 0.3s ease;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s ease;
         }
 
         .project-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 12px 35px rgba(52, 152, 219, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
         }
 
         .project-image {
             width: 100%;
-            height: 220px;
+            height: 250px;
             object-fit: cover;
         }
 
@@ -430,600 +560,773 @@
             padding: 2rem;
         }
 
-        .project-card h3 {
-            color: #1a1a1a;
-            font-size: 1.6rem;
+        .project-content h3 {
+            font-size: 1.5rem;
+            color: var(--dark);
             margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-tag {
-            background: white;
-            color: #3498db;
-            padding: 0.4rem 0.9rem;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            border: 2px solid #e8f4f8;
         }
 
         .project-description {
-            color: #555;
+            color: var(--gray);
             line-height: 1.7;
-            margin-bottom: 1.5rem;
+            margin: 1rem 0;
         }
 
         .project-links {
             display: flex;
             gap: 1rem;
+            margin-top: 1.5rem;
         }
 
-        .project-btn {
-            padding: 0.7rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
+        /* Skills Section - Icon Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: var(--white);
+            padding: 1.5rem;
+            border-radius: 16px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--dark);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .skill-item:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(37, 99, 235, 0.2);
+            color: var(--primary);
+        }
+
+        /* Certifications Section */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .cert-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+
+        .cert-logo {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+
+        .cert-info h3 {
+            font-size: 1.3rem;
+            color: var(--dark);
+            margin-bottom: 0.3rem;
+        }
+
+        .cert-issuer {
+            color: var(--primary);
             font-weight: 600;
             font-size: 0.95rem;
+        }
+
+        .cert-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-top: 0.3rem;
+        }
+
+        /* References Section */
+        .references-grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .reference-card {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid var(--primary);
+        }
+
+        .reference-card h3 {
+            font-size: 1.6rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .reference-title {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .reference-card p {
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 1.1rem;
+            font-style: italic;
+        }
+
+        /* Contact Section - Dark Background */
+        .contact-section {
+            background: var(--dark);
+            color: var(--white);
+            padding: 6rem 2rem;
+            margin: 0;
+            border-radius: 0;
+        }
+
+        .contact-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-section .section-label {
+            color: var(--secondary);
+        }
+
+        .contact-section .section-title {
+            color: var(--white);
+        }
+
+        .contact-section .section-description {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .contact-card {
+            background: var(--dark-light);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: left;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s ease;
-            display: inline-flex;
+        }
+
+        .contact-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .contact-icon {
+            width: 48px;
+            height: 48px;
+            background: var(--primary);
+            border-radius: 12px;
+            display: flex;
             align-items: center;
-            gap: 0.5rem;
+            justify-content: center;
+            margin-bottom: 1rem;
         }
 
-        .btn-primary {
-            background: #3498db;
-            color: white;
+        .contact-icon svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--white);
         }
 
-        .btn-primary:hover {
-            background: #2980b9;
-            transform: translateY(-2px);
+        .contact-label {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--white);
         }
 
-        .btn-secondary {
-            background: white;
-            color: #3498db;
-            border: 2px solid #3498db;
+        .contact-card a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: color 0.3s;
         }
 
-        .btn-secondary:hover {
-            background: #3498db;
-            color: white;
-            transform: translateY(-2px);
+        .contact-card a:hover {
+            color: var(--primary);
         }
 
-        @media (max-width: 768px) {
-            .sidebar-nav {
-                position: fixed;
-                left: 0;
-                top: auto;
-                bottom: 0;
-                transform: none;
-                width: 100%;
-                padding: 1rem;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(10px);
-                box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.1);
-                border-radius: 0;
-            }
+        /* Footer */
+        footer {
+            background: var(--dark-light);
+            color: rgba(255, 255, 255, 0.6);
+            text-align: center;
+            padding: 2rem;
+        }
 
-            .sidebar-nav ul {
-                flex-direction: row;
-                gap: 0.5rem;
-                overflow-x: auto;
-                -webkit-overflow-scrolling: touch;
-                padding-bottom: 0.5rem;
-            }
-
-            .sidebar-nav ul::-webkit-scrollbar {
-                height: 4px;
-            }
-
-            .sidebar-nav ul::-webkit-scrollbar-track {
-                background: rgba(52, 152, 219, 0.1);
-                border-radius: 2px;
-            }
-
-            .sidebar-nav ul::-webkit-scrollbar-thumb {
-                background: #3498db;
-                border-radius: 2px;
-            }
-
-            .sidebar-nav a {
-                font-size: 0.85rem;
-                padding: 0.6rem 1.2rem;
-                white-space: nowrap;
-                border-radius: 20px;
-            }
-
-            .sidebar-nav a::before {
-                display: none;
-            }
-
-            .sidebar-nav a::after {
-                border-radius: 20px;
-            }
-
-            .sidebar-nav a:hover,
-            .sidebar-nav a.active {
-                padding-left: 1.2rem;
-            }
-
-            .sidebar-nav a.active {
-                background: rgba(52, 152, 219, 0.15);
-            }
-
-            .container {
-                margin-left: 0;
-                padding: 1rem 1rem 5rem;
-            }
-
-            h1 {
-                font-size: 2.5rem;
-            }
-
-            h2 {
-                font-size: 1.8rem;
-            }
-
-            section {
-                padding: 2rem 1.5rem;
-                margin: 2rem 0;
-            }
-
-            .container {
-                padding: 1rem 1rem 2rem;
-            }
-
+        /* Responsive Design */
+        @media (max-width: 1024px) {
             .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-right {
                 padding: 3rem 2rem;
             }
 
-            .hero-content {
-                flex-direction: column;
-                gap: 2rem;
+            .halftone-background {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.5rem;
+                padding: 1rem;
             }
 
-            .hero-image {
-                width: 180px;
-                height: 180px;
-            }
-
-            .about-section {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .about-section.reverse {
-                direction: ltr;
-            }
-
-            .about-image {
+            .hero-image-wrapper {
+                width: 300px;
                 height: 300px;
-                width: 100%;
             }
 
-            .about-text {
-                font-size: 1.1rem;
-            }
-
-            .experience-item, .reference-item {
-                padding: 1.5rem;
-            }
-
-            .experience-item h3, .reference-item h3 {
-                font-size: 1.4rem;
-            }
-
-            .skills {
-                gap: 0.8rem;
-            }
-
-            .skill-tag {
-                font-size: 0.9rem;
-                padding: 0.6rem 1.2rem;
-            }
-
-            .contact-info {
+            .about-grid {
                 grid-template-columns: 1fr;
             }
 
             .projects-grid {
                 grid-template-columns: 1fr;
             }
+        }
 
-            .project-image {
-                height: 200px;
-            }
-
-            .project-content {
-                padding: 1.5rem;
-            }
-
-            .project-links {
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--dark);
                 flex-direction: column;
+                padding: 1rem;
+                gap: 0;
             }
 
-            .project-btn {
-                justify-content: center;
+            .nav-menu.active {
+                display: flex;
+            }
+
+            .nav-menu a {
+                padding: 1rem;
+                border-radius: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero-left {
+                padding: 3rem 2rem;
+            }
+
+            .hero-left h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .halftone-background {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .halftone-image {
+                height: 150px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .experience-timeline {
+                padding-left: 2rem;
+            }
+
+            .interests-content {
+                padding: 3rem 2rem;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+
+            .cert-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Sidebar Navigation -->
-    <nav class="sidebar-nav">
-        <ul>
-            <li><a href="#about" class="nav-link">About Me</a></li>
-            <li><a href="#interests" class="nav-link">Interests</a></li>
-            <li><a href="#experience" class="nav-link">Experience</a></li>
-            <li><a href="#projects" class="nav-link">Projects</a></li>
-            <li><a href="#skills" class="nav-link">Skills</a></li>
-            <li><a href="#certifications" class="nav-link">Certifications</a></li>
-            <li><a href="#references" class="nav-link">References</a></li>
-            <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-container">
+            <div class="logo">Connor<span>.</span></div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#interests" class="nav-link">Interests</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#certifications" class="nav-link">Certifications</a></li>
+                <li><a href="#references" class="nav-link">References</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <div class="container">
-        <section class="hero">
-            <div class="hero-content">
-                <img src="headshot.jpg" alt="Connor Regard Professional Photo" class="hero-image">
-                <div class="hero-text">
-                    <h1>Connor Regard, EIT</h1>
-                    <p class="subtitle">Data Engineer | Electrical Engineer</p>
-                    <p>LSU Electrical Engineering Graduate | Dallas, TX</p>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-left">
+
+            <h1>Connor Regard, EIT</h1>
+            <p class="hero-subtitle">Data Engineer | Electrical Engineer</p>
+            <p class="hero-description">LSU Electrical Engineering graduate combining technical expertise with entrepreneurial drive. Specializing in low-voltage systems, data infrastructure, and building solutions that bridge engineering and business.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Get In Touch →</a>
+                <a href="#projects" class="btn btn-secondary">View Projects</a>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="halftone-background">
+                <div class="halftone-column">
+                    <img src="golf.png" alt="" class="halftone-image">
+                    <img src="lsu graduation.png" alt="" class="halftone-image">
+                    <img src="connor at event.png" alt="" class="halftone-image">
+                    <img src="golf.png" alt="" class="halftone-image">
+                    <img src="lsu graduation.png" alt="" class="halftone-image">
+                </div>
+                <div class="halftone-column">
+                    <img src="friends standing next to robot.png" alt="" class="halftone-image">
+                    <img src="golf.png" alt="" class="halftone-image">
+                    <img src="connor at event.png" alt="" class="halftone-image">
+                    <img src="friends standing next to robot.png" alt="" class="halftone-image">
+                    <img src="golf.png" alt="" class="halftone-image">
+                </div>
+                <div class="halftone-column">
+                    <img src="lsu graduation.png" alt="" class="halftone-image">
+                    <img src="friends standing next to robot.png" alt="" class="halftone-image">
+                    <img src="golf.png" alt="" class="halftone-image">
+                    <img src="lsu graduation.png" alt="" class="halftone-image">
+                    <img src="friends standing next to robot.png" alt="" class="halftone-image">
+                </div>
+                <div class="halftone-column">
+                    <img src="connor at event.png" alt="" class="halftone-image">
+                    <img src="lsu graduation.png" alt="" class="halftone-image">
+                    <img src="friends standing next to robot.png" alt="" class="halftone-image">
+                    <img src="connor at event.png" alt="" class="halftone-image">
+                    <img src="lsu graduation.png" alt="" class="halftone-image">
                 </div>
             </div>
-        </section>
+            <div class="hero-image-wrapper">
+                <img src="headshot.jpg" alt="Connor Regard" class="hero-image">
+            </div>
+        </div>
+    </section>
 
-        <section id="about">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-section">
-                    <div class="about-text-section">
-                        <p class="about-text">Hey there! I'm Connor (that's me on the left), a Louisiana native and proud LSU Tiger who recently made the move to Dallas to kick off my career as a Data Engineer at Telios. I graduated with my BS in Electrical Engineering in May 2025 and passed my FE exam shortly after, officially making me an Engineer in Training!</p>
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <div class="container">
+            <!-- About Section -->
+            <section id="about">
+                <div class="section-header">
+                    <div class="section-label">Get to Know Me</div>
+                    <h2 class="section-title">About Me</h2>
+                    <p class="section-description">From founding my first business at 16 to designing automated systems at LSU, my journey has been driven by curiosity and a passion for problem-solving.</p>
+                </div>
+                <div class="about-grid">
+                    <div class="about-card">
+                        <img src="connor at event.png" alt="Connor at event">
+                        <h3>Louisiana Native, Dallas Professional</h3>
+                        <p>Hey there! I'm Connor, a Louisiana native and proud LSU Tiger who recently made the move to Dallas to kick off my career as a Data Engineer at Telios. I graduated with my BS in Electrical Engineering in May 2025 and passed my FE exam shortly after, officially making me an Engineer in Training!</p>
                     </div>
-                    <img src="connor at event.png" alt="Connor at LSU formal event" class="about-image">
-                </div>
-
-                <div class="about-section reverse">
-                    <div class="about-text-section">
-                        <p class="about-text">My journey into engineering has been anything but typical. I started my first business at 16, running CR Pressure Washing throughout high school and college, serving over 70 homes across Louisiana. That entrepreneurial experience taught me grit, customer service, and how to manage projects from start to finish... skills that still serve me well today.</p>
+                    <div class="about-card">
+                        <img src="lsu graduation.png" alt="LSU Graduation">
+                        <h3>Entrepreneurial Spirit</h3>
+                        <p>My journey into engineering has been anything but typical. I started my first business at 16, running CR Pressure Washing throughout high school and college, serving over 70 homes across Louisiana. That entrepreneurial experience taught me grit, customer service, and how to manage projects from start to finish.</p>
                     </div>
-                    <img src="lsu graduation.png" alt="LSU Graduation 2025" class="about-image">
-                </div>
-
-                <div class="about-section">
-                    <div class="about-text-section">
-                        <p class="about-text">At LSU, I dove deep into electrical systems, controls, and automation. From programming PLCs and designing electrical systems during my internship at Olin to building an automated bartender for my senior capstone project, I love solving complex problems with creative, hands on solutions. I also served as Academic Chair for SAE fraternity and stayed involved with IEEE, Habitat for Humanity, and Younglife.</p>
+                    <div class="about-card">
+                        <img src="friends standing next to robot.png" alt="Engineering projects">
+                        <h3>Technical Excellence</h3>
+                        <p>At LSU, I dove deep into electrical systems, controls, and automation. From programming PLCs and designing electrical systems during my internship at Olin to building an automated bartender for my senior capstone project, I love solving complex problems with creative, hands-on solutions.</p>
                     </div>
-                    <img src="friends standing next to robot.png" alt="Senior design automated bartender project" class="about-image">
-                </div>
-
-                <div class="about-section reverse">
-                    <div class="about-text-section">
-                        <p class="about-text">When I'm not designing low voltage systems or optimizing data center infrastructure, you'll find me on the golf course, in the gym, or tinkering with the latest tech. I'm passionate about continuous improvement... whether that's in my career, my golf swing, or my mile PR. I thrive in collaborative environments and love working with teams that push each other to be better every day.</p>
+                    <div class="about-card">
+                        <img src="golf.png" alt="Golf with friends">
+                        <h3>Beyond Engineering</h3>
+                        <p>When I'm not designing low voltage systems or optimizing data center infrastructure, you'll find me on the golf course, in the gym, or tinkering with the latest tech. I'm passionate about continuous improvement—whether that's in my career, my golf swing, or my mile PR.</p>
                     </div>
-                    <img src="golf.png" alt="Golf trip with friends" class="about-image">
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="interests">
-            <h2>Interests & Career Goals</h2>
-            <div class="about-text" style="max-width: 900px; margin: 0 auto;">
-                <p style="margin-bottom: 1.5rem;">While I'm currently working as a Data Engineer, I've discovered something unexpected about myself through a side project that's changed how I think about my career. After graduating, I failed the FE exam on my first attempt. Instead of getting discouraged, I found Wasim Asghar's Study for FE, a SaaS platform that helped me pass on my second try.</p>
-                
-                <p style="margin-bottom: 1.5rem;">I was so impressed by how the right solution at the right time completely changed my outcome that I reached out to Wasim directly, offering to work for free just to learn. What started as curiosity turned into a partnership where I conduct competitive analysis, SEO audits, and sales strategy work for Study for FE.</p>
-                
-                <p style="margin-bottom: 1.5rem;">But the part that really surprised me was working with students during onboarding. Understanding their challenges, talking through their goals, and helping them find the right solution became my favorite part of the week. That's when I realized something important: I genuinely enjoy working with people, understanding their problems, and helping them find solutions.</p>
-                
-                <p>So while I'm building my technical career, I'm also exploring opportunities where I can combine my engineering background with this newfound interest in working directly with people. Whether that's in technical sales, solutions engineering, or customer success, I'm excited to find a role where I can use both my technical skills and my passion for helping people solve problems.</p>
-            </div>
-        </section>
-
-         <section id="experience">
-            <h2>Professional Experience</h2>
-            
-            <div class="experience-item">
-                <h3>Data Engineer</h3>
-                <div class="company">Telios</div>
-                <div class="date">July 2025 - Present | Dallas, TX</div>
-                <ul>
-                    <li>Support the low voltage engineering team on large scale construction projects including data centers, automotive manufacturing facilities, and commercial office buildings</li>
-                    <li>Produce and coordinate detailed electrical design documents using Revit, ensuring integration with architectural and mechanical systems while meeting code and client standards</li>
-                    <li>Collaborate directly with clients, contractors, and internal teams to resolve field coordination issues and deliver constructible low voltage solutions including technology, AV, and security systems</li>
-                </ul>
-                <div class="skills">
-                    <span class="skill-tag">Team Building & Collaboration</span>
-                    <span class="skill-tag">Client Relations</span>
-                    <span class="skill-tag">Project Coordination</span>
-                    <span class="skill-tag">Revit & AutoCAD</span>
-                    <span class="skill-tag">Electrical Engineering</span>
-                    <span class="skill-tag">Low Voltage Design</span>
-                    <span class="skill-tag">Data Centers</span>
+            <!-- Interests Section -->
+            <section id="interests">
+                <div class="interests-content">
+                    <div class="interests-text">
+                        <h3>Career Goals & Interests</h3>
+                        <p>While I'm currently working as a Data Engineer, I've discovered something unexpected about myself through a side project that's changed how I think about my career. After graduating, I failed the FE exam on my first attempt. Instead of getting discouraged, I found Wasim Asghar's Study for FE, a SaaS platform that helped me pass on my second try.</p>
+                        <p>I was so impressed by how the right solution at the right time completely changed my outcome that I reached out to Wasim directly, offering to work for free just to learn. What started as curiosity turned into a partnership where I conduct competitive analysis, SEO audits, and sales strategy work for Study for FE.</p>
+                        <p>But the part that really surprised me was working with students during onboarding. Understanding their challenges, talking through their goals, and helping them find the right solution became my favorite part of the week. That's when I realized something important: I genuinely enjoy working with people, understanding their problems, and helping them find solutions.</p>
+                        <p>So while I'm building my technical career, I'm also exploring opportunities where I can combine my engineering background with this newfound interest in working directly with people. Whether that's in technical sales, solutions engineering, or customer success, I'm excited to find a role where I can use both my technical skills and my passion for helping people solve problems.</p>
+                    </div>
                 </div>
-            </div>
+            </section>
 
-            <div class="experience-item">
-                <h3>Product Strategy Analyst (Contract)</h3>
-                <div class="company">StudyForFE</div>
-                <div class="date">May 2025 - Present | Remote</div>
-                <ul>
-                    <li>Collaborated with the founder of Study for FE, a national SaaS based education platform serving thousands of engineering students preparing for professional licensure exams</li>
-                    <li>Led SEO and competitive market research to identify high impact keywords, content gaps, and optimization strategies that improved visibility and lead conversion</li>
-                    <li>Conducted customer onboarding consultations to help students assess their needs and find the right study package for their goals</li>
-                    <li>Strengthened sales performance by improving student onboarding processes and implementing AI driven lead nurture strategies that kept prospects engaged throughout the funnel</li>
-                </ul>
-                <div class="skills">
-                    <span class="skill-tag">SEO Strategy</span>
-                    <span class="skill-tag">Market Research</span>
-                    <span class="skill-tag">AI Tools</span>
-                    <span class="skill-tag">SaaS Analytics</span>
-                    <span class="skill-tag">Customer Onboarding</span>
-                    <span class="skill-tag">Sales Optimization</span>
+            <!-- Experience Section -->
+            <section id="experience">
+                <div class="section-header">
+                    <div class="section-label">My Journey</div>
+                    <h2 class="section-title">Professional Experience</h2>
                 </div>
-            </div>
-
-            <div class="experience-item">
-                <h3>Electrical Engineering Intern</h3>
-                <div class="company">Olin Corporation</div>
-                <div class="date">May 2024 - August 2025 | St. Gabriel, LA</div>
-                <ul>
-                    <li>Collaborated with maintenance and reliability engineers to enhance plant reliability through electrical control systems optimization and troubleshooting</li>
-                    <li>Executed flow meter redundancy project, managed large scale concrete containment repairs, and led the redesign of critical mechanical systems to enhance operational efficiency</li>
-                    <li>Developed advanced electrical control systems using PLC programming, DCS, and Allen Bradley platforms while ensuring compliance with safety standards</li>
-                </ul>
-                <div class="skills">
-                    <span class="skill-tag">PLC Programming</span>
-                    <span class="skill-tag">Allen Bradley</span>
-                    <span class="skill-tag">DCS Systems</span>
-                    <span class="skill-tag">SAP</span>
-                    <span class="skill-tag">Instrumentation</span>
-                    <span class="skill-tag">Project Management</span>
-                </div>
-            </div>
-
-            <div class="experience-item">
-                <h3>Founder & Operator</h3>
-                <div class="company">CR Pressure Washing</div>
-                <div class="date">April 2018 - August 2022 | Shreveport, LA</div>
-                <ul>
-                    <li>Founded and successfully operated a pressure washing business from age 16 through college</li>
-                    <li>Completed pressure washing projects for over 70 homes across Louisiana, managing all aspects of customer relations, scheduling, and service delivery</li>
-                    <li>Developed strong business acumen, work ethic, and customer service skills that continue to serve me in my engineering career</li>
-                </ul>
-                <div class="skills">
-                    <span class="skill-tag">Entrepreneurship</span>
-                    <span class="skill-tag">Customer Service</span>
-                    <span class="skill-tag">Business Operations</span>
-                    <span class="skill-tag">Time Management</span>
-                </div>
-            </div>
-        </section>
-<section id="projects">
-            <h2>Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <img src="BNR Homepage.png" alt="BNR Strategies Home Page" class="project-image">
-                    <div class="project-content">
-                        <h3>Freelance Marketing/AI Agency</h3>
-                        <div class="project-tags">
-                            <span class="project-tag">Sales Strategy</span>
-                            <span class="project-tag">Funnel Optimization</span>
-                             <span class="project-tag">Cold Calling</span>
-                            <span class="project-tag">CRM (GoHighLevel)</span>
-                            <span class="project-tag">Multi-step Automations</span>
-                            <span class="project-tag">API webhooks</span>
-                             <span class="project-tag">LLM-as-a-service (Anthropic, OpenAI)</span>
-                            <span class="project-tag">AI Voice/Chatbot Integration</span>
-                            <span class="project-tag">Lead Qualification</span>
-                        </div>
-                        <p class="project-description">Developed and deployed a proof-of-concept AI-powered client acquisition system for local service businesses, integrating landing pages, follow-up automations, and booking flows using GoHighLevel.
-The project was designed to test how agent-style AI (chat widgets, instant replies, lead routing) could improve sales efficiency and reduce manual workload across both tangible and SaaS-based systems.</p>
-                        <div class="project-links">
-                            <a href="https://bnrstrategies.com/ai-test-drive" class="project-btn btn-primary">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-                                Live Demo
-                            </a>
+                <div class="experience-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-card">
+                            <div class="timeline-header">
+                                <div class="timeline-title">
+                                    <h3>Data Engineer</h3>
+                                    <div class="timeline-company">Telios</div>
+                                </div>
+                                <div class="timeline-date">July 2025 - Present | Dallas, TX</div>
+                            </div>
+                            <div class="timeline-content">
+                                <ul>
+                                    <li>Support the low voltage engineering team on large scale construction projects including data centers, automotive manufacturing facilities, and commercial office buildings</li>
+                                    <li>Produce and coordinate detailed electrical design documents using Revit, ensuring integration with architectural and mechanical systems while meeting code and client standards</li>
+                                    <li>Collaborate directly with clients, contractors, and internal teams to resolve field coordination issues and deliver constructible low voltage solutions including technology, AV, and security systems</li>
+                                </ul>
+                            </div>
+                            <div class="tags">
+                                <span class="tag">Team Collaboration</span>
+                                <span class="tag">Client Relations</span>
+                                <span class="tag">Project Coordination</span>
+                                <span class="tag">Revit & AutoCAD</span>
+                                <span class="tag">Low Voltage Design</span>
+                                <span class="tag">Data Centers</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="project-card">
-                    <img src="studyforfe.png" alt="Study for FE Analytics" class="project-image">
-                    <div class="project-content">
-                        <h3>SaaS Growth & Analytics</h3>
-                        <div class="project-tags">
-                            <span class="project-tag">SEO Strategy</span>
-                            <span class="project-tag">AI Tools</span>
-                            <span class="project-tag">Inbound Lead Management</span>
-                            <span class="project-tag">SaaS Analytics</span>
-                            <span class="project-tag">Competitor Analysis</span>
-                            <span class="project-tag">Copy Development</span>
-                            <span class="project-tag">Student Onboarding</span>
-                        </div>
-                        <p class="project-description">Volunteered to partner with Study for FE at no cost to explore how AI, SEO, and funnel strategy could improve customer acquisition and onboarding. Conducted in-depth audits on user experience, competitor positioning, and sales workflows, applying automation and analytics to deliver actionable insights. The project served as a proof of concept in using tech-driven solutions to solve real business problems while building firsthand experience in SaaS growth strategy.</p>
-                        <div class="project-links">
-                             <a href="https://www.studyforfe.com/?utm_source=google&utm_medium=cpc&utm_campaign=Orion-Search-Branding-16Mar2023&utm_campaignid=19820734788&utm_content=145677252846&utm_term=studyforfe&utm_device=c&gad_source=1&gad_campaignid=19820734788&gbraid=0AAAAAC146PekYwF1ytIN2FzOHv6Q2zMyy&gclid=CjwKCAiAw9vIBhBBEiwAraSAThOXVb8Uqa_p1tTXNfPJf-tdsOAw9BYUSMWl0YlHlkpuKluZs2TPNRoCZQgQAvD_BwE" class="project-btn btn-primary">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-                                More
-                            </a>
-                            <a href="https://drive.google.com/drive/folders/10ByRZx57RPIpC82RybW98007U8ljbwPC?usp=drive_link" class="project-btn btn-secondary">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z"/></svg>
-                                Case Studies
-                            </a>
+
+                    <div class="timeline-item">
+                        <div class="timeline-card">
+                            <div class="timeline-header">
+                                <div class="timeline-title">
+                                    <h3>Product Strategy Analyst</h3>
+                                    <div class="timeline-company">StudyForFE (Contract)</div>
+                                </div>
+                                <div class="timeline-date">May 2025 - Present | Remote</div>
+                            </div>
+                            <div class="timeline-content">
+                                <ul>
+                                    <li>Collaborated with the founder of Study for FE, a national SaaS based education platform serving thousands of engineering students preparing for professional licensure exams</li>
+                                    <li>Led SEO and competitive market research to identify high impact keywords, content gaps, and optimization strategies that improved visibility and lead conversion</li>
+                                    <li>Conducted customer onboarding consultations to help students assess their needs and find the right study package for their goals</li>
+                                    <li>Strengthened sales performance by improving student onboarding processes and implementing AI driven lead nurture strategies</li>
+                                </ul>
+                            </div>
+                            <div class="tags">
+                                <span class="tag">SEO Strategy</span>
+                                <span class="tag">Market Research</span>
+                                <span class="tag">AI Tools</span>
+                                <span class="tag">Customer Onboarding</span>
+                                <span class="tag">Sales Optimization</span>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="project-card">
-                    <img src="friends standing next to robot.png" alt="Automated Bartender" class="project-image">
-                    <div class="project-content">
-                        <h3>Automated Bartender</h3>
-                        <div class="project-tags">
-                            <span class="project-tag">Programming (C, Ladder Logic)</span>
-                            <span class="project-tag">Collaboration & Team Building</span>
-                            <span class="project-tag">Presentation</span>
-                            <span class="project-tag">2D and 3D Modeling</span>
-                            <span class="project-tag">Manufacturing</span>
+                    <div class="timeline-item">
+                        <div class="timeline-card">
+                            <div class="timeline-header">
+                                <div class="timeline-title">
+                                    <h3>Electrical Engineering Intern</h3>
+                                    <div class="timeline-company">Olin Corporation</div>
+                                </div>
+                                <div class="timeline-date">May 2024 - August 2025 | St. Gabriel, LA</div>
+                            </div>
+                            <div class="timeline-content">
+                                <ul>
+                                    <li>Collaborated with maintenance and reliability engineers to enhance plant reliability through electrical control systems optimization and troubleshooting</li>
+                                    <li>Executed flow meter redundancy project, managed large scale concrete containment repairs, and led the redesign of critical mechanical systems</li>
+                                    <li>Developed advanced electrical control systems using PLC programming, DCS, and Allen Bradley platforms while ensuring compliance with safety standards</li>
+                                </ul>
+                            </div>
+                            <div class="tags">
+                                <span class="tag">PLC Programming</span>
+                                <span class="tag">Allen Bradley</span>
+                                <span class="tag">DCS Systems</span>
+                                <span class="tag">Instrumentation</span>
+                                <span class="tag">Project Management</span>
+                            </div>
                         </div>
-                        <p class="project-description">An automated bartender system built as my LSU senior capstone project. Designed and programmed a PLC controlled system with HMI touchscreen interface to mix and dispense custom drinks automatically.</p>
-                        <div class="project-links">
-                            <a href="https://github.com/connorregard/Automated-Bartender-LSU-Capstone-Project/blob/main/README.md" class="project-btn btn-primary">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"/></svg>
-                                More
-                            </a>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-card">
+                            <div class="timeline-header">
+                                <div class="timeline-title">
+                                    <h3>Founder & Operator</h3>
+                                    <div class="timeline-company">CR Pressure Washing</div>
+                                </div>
+                                <div class="timeline-date">April 2018 - August 2022 | Shreveport, LA</div>
+                            </div>
+                            <div class="timeline-content">
+                                <ul>
+                                    <li>Founded and successfully operated a pressure washing business from age 16 through college</li>
+                                    <li>Completed pressure washing projects for over 70 homes across Louisiana, managing all aspects of customer relations, scheduling, and service delivery</li>
+                                    <li>Developed strong business acumen, work ethic, and customer service skills that continue to serve me in my engineering career</li>
+                                </ul>
+                            </div>
+                            <div class="tags">
+                                <span class="tag">Entrepreneurship</span>
+                                <span class="tag">Customer Service</span>
+                                <span class="tag">Business Operations</span>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="skills">
-            <h2>Core Skills</h2>
-            <div class="skills">
-                <span class="skill-tag">Electrical Engineering</span>
-                <span class="skill-tag">Revit & AutoCAD</span>
-                <span class="skill-tag">PLC Programming</span>
-                <span class="skill-tag">Low Voltage Systems</span>
-                <span class="skill-tag">Project Management</span>
-                <span class="skill-tag">Team Leadership</span>
-                <span class="skill-tag">Data Centers</span>
-                <span class="skill-tag">Customer Onboarding</span>
-                <span class="skill-tag">SEO & Strategy</span>
-                <span class="skill-tag">Competitive Analysis</span>
-                <span class="skill-tag">Problem Solving</span>
-                <span class="skill-tag">Team Leadership</span>
-                <span class="skill-tag">Technical Communication</span>
-                <span class="skill-tag">Lead Nurturing</span>
-            </div>
-        </section>
-
-        
-       
-
-        <section id="certifications">
-            <h2>Licenses & Certifications</h2>
-            
-            <div class="experience-item" style="display: flex; align-items: center; gap: 2rem;">
-                <img src="lapels-logo.png" alt="LAPELS Logo" style="width: 80px; height: 80px; object-fit: contain; flex-shrink: 0;">
-                <div style="flex: 1;">
-                    <h3>Engineer In Training (EIT)</h3>
-                    <div class="company">Louisiana Professional Engineering and Land Surveying Board (LAPELS)</div>
-                    <div class="date">Issued July 2025</div>
+            <!-- Projects Section -->
+            <section id="projects">
+                <div class="section-header">
+                    <div class="section-label">What I've Built</div>
+                    <h2 class="section-title">Featured Projects</h2>
+                    <p class="section-description">From AI-powered automation to hands-on engineering, here are some highlights of my work.</p>
                 </div>
-            </div>
+                <div class="projects-grid">
+                    <div class="project-card">
+                        <img src="BNR Homepage.png" alt="BNR Strategies" class="project-image">
+                        <div class="project-content">
+                            <h3>Freelance Marketing/AI Agency</h3>
+                            <div class="tags">
+                                <span class="tag">Sales Strategy</span>
+                                <span class="tag">AI Integration</span>
+                                <span class="tag">CRM (GoHighLevel)</span>
+                                <span class="tag">API Webhooks</span>
+                                <span class="tag">Lead Qualification</span>
+                            </div>
+                            <p class="project-description">Developed an AI-powered client acquisition system for local service businesses, integrating landing pages, follow-up automations, and booking flows. Tested how agent-style AI could improve sales efficiency and reduce manual workload.</p>
+                            <div class="project-links">
+                                <a href="https://bnrstrategies.com/ai-test-drive" class="btn btn-primary">Live Demo →</a>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="experience-item" style="display: flex; align-items: center; gap: 2rem;">
-                <img src="ncees-logo.png" alt="NCEES Logo" style="width: 80px; height: 80px; object-fit: contain; flex-shrink: 0;">
-                <div style="flex: 1;">
-                    <h3>FE Exam</h3>
-                    <div class="company">NCEES</div>
-                    <div class="date">Passed July 2025</div>
-                </div>
-            </div>
+                    <div class="project-card">
+                        <img src="studyforfe.png" alt="Study for FE" class="project-image">
+                        <div class="project-content">
+                            <h3>SaaS Growth & Analytics</h3>
+                            <div class="tags">
+                                <span class="tag">SEO Strategy</span>
+                                <span class="tag">AI Tools</span>
+                                <span class="tag">SaaS Analytics</span>
+                                <span class="tag">Competitor Analysis</span>
+                                <span class="tag">Customer Onboarding</span>
+                            </div>
+                            <p class="project-description">Partnered with Study for FE to explore how AI, SEO, and funnel strategy could improve customer acquisition. Conducted audits on user experience, competitor positioning, and sales workflows, applying automation and analytics to deliver actionable insights.</p>
+                            <div class="project-links">
+                                <a href="https://www.studyforfe.com" class="btn btn-primary">Learn More →</a>
+                                <a href="https://drive.google.com/drive/folders/10ByRZx57RPIpC82RybW98007U8ljbwPC" class="btn btn-secondary">Case Studies</a>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="experience-item" style="display: flex; align-items: center; gap: 2rem;">
-                <img src="databricks-badge.png" alt="Databricks Generative AI Fundamentals Badge" style="width: 80px; height: 80px; object-fit: contain; flex-shrink: 0;">
-                <div style="flex: 1;">
-                    <h3>Generative AI Fundamentals</h3>
-                    <div class="company">Databricks</div>
-                    <div class="date">Issued 2025</div>
-                </div>
-            </div>
-        </section>
-
-        <section id="references">
-            <h2>Professional References</h2>
-            
-            <div class="reference-item">
-                <h3>Wasim Asghar</h3>
-                <p><strong>Founder, StudyForFE</strong></p>
-                <p>"He's the kind of person who figures things out quickly, takes ownership, and always brings a positive, solutions oriented attitude."</p>
-            </div>
-
-            <div class="reference-item">
-                <h3>Dave Giurintano</h3>
-                <p><strong>LSU Capstone Professor</strong></p>
-                <p>"Mr. Regard has impressed me as a hard worker and someone who is extremely flexible and wise in a time of crisis. I have no doubt that he will thrive in any of his future endeavors!"</p>
-            </div>
-
-            <div class="reference-item">
-                <h3>Additional References</h3>
-                <p>Additional professional references from Telios and Olin Corporation leadership are available upon request. I'm happy to connect you with supervisors and colleagues who can speak to my technical abilities, communication skills, and client focused approach.</p>
-            </div>
-        </section>
-
-        <section id="contact">
-            <h2>Get In Touch</h2>
-            <p class="about-text" style="max-width: 800px; margin-bottom: 2rem;">I'm always interested in connecting with fellow engineers, potential collaborators, or anyone who wants to talk about electrical systems, tech, or the best golf courses in Dallas. If you're looking for someone who combines technical expertise with a genuine interest in helping people, let's connect!</p>
-            
-            <div class="contact-info">
-                <div class="contact-item">
-                    <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                    <div>
-                        <strong>Email</strong><br>
-                        <a href="mailto:connorregard1@gmail.com">connorregard1@gmail.com</a>
+                    <div class="project-card">
+                        <img src="friends standing next to robot.png" alt="Automated Bartender" class="project-image">
+                        <div class="project-content">
+                            <h3>Automated Bartender</h3>
+                            <div class="tags">
+                                <span class="tag">PLC Programming</span>
+                                <span class="tag">C & Ladder Logic</span>
+                                <span class="tag">HMI Interface</span>
+                                <span class="tag">3D Modeling</span>
+                                <span class="tag">Manufacturing</span>
+                            </div>
+                            <p class="project-description">LSU senior capstone project featuring a PLC-controlled system with HMI touchscreen interface to automatically mix and dispense custom drinks. Integrated hardware design, programming, and user interface development.</p>
+                            <div class="project-links">
+                                <a href="https://github.com/connorregard/Automated-Bartender-LSU-Capstone-Project/blob/main/README.md" class="btn btn-primary">View on GitHub →</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <div class="contact-item">
-                    <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-                    <div>
-                        <strong>Phone</strong><br>
-                        <a href="tel:+13182682970">(318) 268-2970</a>
+            <!-- Skills Section -->
+            <section id="skills">
+                <div class="section-header">
+                    <div class="section-label">Capabilities</div>
+                    <h2 class="section-title">Core Skills</h2>
+                </div>
+                <div class="skills-grid">
+                    <div class="skill-item">Electrical Engineering</div>
+                    <div class="skill-item">Revit & AutoCAD</div>
+                    <div class="skill-item">PLC Programming</div>
+                    <div class="skill-item">Low Voltage Systems</div>
+                    <div class="skill-item">Project Management</div>
+                    <div class="skill-item">Team Leadership</div>
+                    <div class="skill-item">Data Centers</div>
+                    <div class="skill-item">Customer Onboarding</div>
+                    <div class="skill-item">SEO & Strategy</div>
+                    <div class="skill-item">Competitive Analysis</div>
+                    <div class="skill-item">Problem Solving</div>
+                    <div class="skill-item">Technical Communication</div>
+                    <div class="skill-item">Lead Nurturing</div>
+                    <div class="skill-item">Sales Optimization</div>
+                </div>
+            </section>
+
+            <!-- Certifications Section -->
+            <section id="certifications">
+                <div class="section-header">
+                    <div class="section-label">Credentials</div>
+                    <h2 class="section-title">Licenses & Certifications</h2>
+                </div>
+                <div class="cert-grid">
+                    <div class="cert-card">
+                        <img src="lapels-logo.png" alt="LAPELS" class="cert-logo">
+                        <div class="cert-info">
+                            <h3>Engineer In Training (EIT)</h3>
+                            <div class="cert-issuer">Louisiana Professional Engineering Board</div>
+                            <div class="cert-date">Issued July 2025</div>
+                        </div>
+                    </div>
+                    <div class="cert-card">
+                        <img src="ncees-logo.png" alt="NCEES" class="cert-logo">
+                        <div class="cert-info">
+                            <h3>FE Exam</h3>
+                            <div class="cert-issuer">NCEES</div>
+                            <div class="cert-date">Passed July 2025</div>
+                        </div>
+                    </div>
+                    <div class="cert-card">
+                        <img src="databricks-badge.png" alt="Databricks" class="cert-logo">
+                        <div class="cert-info">
+                            <h3>Generative AI Fundamentals</h3>
+                            <div class="cert-issuer">Databricks</div>
+                            <div class="cert-date">Issued 2025</div>
+                        </div>
                     </div>
                 </div>
+            </section>
 
-                <div class="contact-item">
-                    <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
-                    <div>
-                        <strong>LinkedIn</strong><br>
-                        <a href="https://linkedin.com/in/connor-regard" target="_blank">linkedin.com/in/connor-regard</a>
+            <!-- References Section -->
+            <section id="references">
+                <div class="section-header">
+                    <div class="section-label">Testimonials</div>
+                    <h2 class="section-title">Professional References</h2>
+                </div>
+                <div class="references-grid">
+                    <div class="reference-card">
+                        <h3>Wasim Asghar</h3>
+                        <div class="reference-title">Founder, StudyForFE</div>
+                        <p>"He's the kind of person who figures things out quickly, takes ownership, and always brings a positive, solutions oriented attitude."</p>
+                    </div>
+                    <div class="reference-card">
+                        <h3>Dave Giurintano</h3>
+                        <div class="reference-title">LSU Capstone Professor</div>
+                        <p>"Mr. Regard has impressed me as a hard worker and someone who is extremely flexible and wise in a time of crisis. I have no doubt that he will thrive in any of his future endeavors!"</p>
+                    </div>
+                    <div class="reference-card">
+                        <h3>Additional References</h3>
+                        <div class="reference-title">Available Upon Request</div>
+                        <p>Additional professional references from Telios and Olin Corporation leadership are available upon request. I'm happy to connect you with supervisors and colleagues who can speak to my technical abilities, communication skills, and client-focused approach.</p>
                     </div>
                 </div>
-
-                <div class="contact-item">
-                    <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-                    <div>
-                        <strong>Location</strong><br>
-                        Dallas, Texas
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
+        </div>
     </div>
 
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('.nav-link').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-content">
+            <div class="section-header">
+                <div class="section-label">Let's Connect</div>
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-description">I'm always interested in connecting with fellow engineers, potential collaborators, or anyone who wants to talk about electrical systems, tech, or the best golf courses in Dallas.</p>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    </div>
+                    <div class="contact-label">Email</div>
+                    <a href="/cdn-cgi/l/email-protection#c1a2aeafafaeb3b3a4a6a0b3a5f081a6aca0a8adefa2aeac"><span class="__cf_email__" data-cfemail="2e4d414040415c5c4b494f5c4a1f6e49434f4742004d4143">[email&#160;protected]</span></a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+                    </div>
+                    <div class="contact-label">Phone</div>
+                    <a href="tel:+13182682970">(318) 268-2970</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+                    </div>
+                    <div class="contact-label">LinkedIn</div>
+                    <a href="https://linkedin.com/in/connor-regard" target="_blank">linkedin.com/in/connor-regard</a>
+                </div>
+
+                <div class="contact-card">
+                    <div class="contact-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+                    </div>
+                    <div class="contact-label">Location</div>
+                    <div style="color: rgba(255,255,255,0.8)">Dallas, Texas</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Connor Regard. All rights reserved.</p>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    document.getElementById('navMenu').classList.remove('active');
+                }
             });
         });
 
-        // Highlight active section in sidebar navigation
-        const sections = document.querySelectorAll('section');
+        // Active navigation highlighting
+        const sections = document.querySelectorAll('section[id]');
         const navLinks = document.querySelectorAll('.nav-link');
 
-        function highlightNavigation() {
+        function updateActiveNav() {
             let current = '';
-            
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (window.pageYOffset >= sectionTop - 200) {
+                const sectionTop = section.offsetTop - 100;
+                if (window.pageYOffset >= sectionTop) {
                     current = section.getAttribute('id');
                 }
             });
@@ -1036,31 +1339,13 @@ The project was designed to test how agent-style AI (chat widgets, instant repli
             });
         }
 
-        window.addEventListener('scroll', highlightNavigation);
-        highlightNavigation(); // Call on page load
+        window.addEventListener('scroll', updateActiveNav);
+        updateActiveNav();
 
-        // Animate About Me sections on scroll
-        const aboutSections = document.querySelectorAll('.about-section');
-        
-        const aboutObserver = new IntersectionObserver((entries) => {
-            entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, {
-            threshold: 0.3,
-            rootMargin: '0px 0px -100px 0px'
-        });
-
-        aboutSections.forEach(section => {
-            aboutObserver.observe(section);
-        });
-
-        // Add animation on scroll for other sections
+        // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
+            rootMargin: '0px 0px -100px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -1072,9 +1357,4 @@ The project was designed to test how agent-style AI (chat widgets, instant repli
             });
         }, observerOptions);
 
-        document.querySelectorAll('section').forEach(section => {
-            observer.observe(section);
-        });
-    </script>
-</body>
-</html>
+        document.querySelectorAll('.about-card, .timeline-item, .project-card, .skill-item, .cert-card, .reference-card').forEa
