@@ -428,6 +428,191 @@
             opacity: 0.95;
         }
 
+        /* 30-60-90 Day Plan Section - Accordion Style */
+        .plan-accordion {
+            max-width: 900px;
+            margin: 3rem auto 0;
+        }
+
+        .plan-phase {
+            background: var(--white);
+            border-radius: 16px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+
+        .plan-phase:hover {
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .plan-phase-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 2.5rem;
+            cursor: pointer;
+            background: var(--white);
+            transition: all 0.3s ease;
+            user-select: none;
+        }
+
+        .plan-phase-header:hover {
+            background: var(--light);
+        }
+
+        .plan-phase.active .plan-phase-header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: var(--white);
+        }
+
+        .plan-phase-title {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .plan-phase-number {
+            width: 70px;
+            height: 70px;
+            background: var(--light);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 900;
+            flex-shrink: 0;
+            transition: all 0.3s ease;
+        }
+
+        .plan-phase.active .plan-phase-number {
+            background: rgba(255, 255, 255, 0.2);
+            color: var(--white);
+        }
+
+        .plan-phase-info h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            transition: color 0.3s ease;
+        }
+
+        .plan-phase-subtitle {
+            font-size: 1rem;
+            color: var(--gray);
+            transition: color 0.3s ease;
+        }
+
+        .plan-phase.active .plan-phase-subtitle {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .plan-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            flex-shrink: 0;
+        }
+
+        .plan-phase.active .plan-toggle {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(180deg);
+        }
+
+        .plan-toggle svg {
+            width: 20px;
+            height: 20px;
+            fill: var(--primary);
+            transition: fill 0.3s ease;
+        }
+
+        .plan-phase.active .plan-toggle svg {
+            fill: var(--white);
+        }
+
+        .plan-phase-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease, padding 0.5s ease;
+            background: var(--white);
+        }
+
+        .plan-phase.active .plan-phase-content {
+            max-height: 2000px;
+            padding: 0 2.5rem 2.5rem 2.5rem;
+        }
+
+        .plan-categories {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .plan-category {
+            border-left: 3px solid var(--primary);
+            padding-left: 1.5rem;
+        }
+
+        .plan-category h4 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .plan-items {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .plan-item {
+            display: flex;
+            gap: 1rem;
+            align-items: start;
+        }
+
+        .plan-checkbox {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--primary);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 0.1rem;
+        }
+
+        .plan-checkbox svg {
+            width: 14px;
+            height: 14px;
+            fill: var(--primary);
+        }
+
+        .plan-item-text {
+            flex: 1;
+        }
+
+        .plan-item-text strong {
+            display: block;
+            color: var(--dark);
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .plan-item-text p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
         /* Experience Section - Timeline Style */
         .experience-timeline {
             position: relative;
@@ -799,6 +984,10 @@
                 grid-template-columns: 1fr;
             }
 
+            .plan-grid {
+                grid-template-columns: 1fr;
+            }
+
             .projects-grid {
                 grid-template-columns: 1fr;
             }
@@ -862,6 +1051,10 @@
                 padding: 3rem 2rem;
             }
 
+            .plan-grid {
+                grid-template-columns: 1fr;
+            }
+
             .skills-grid {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
@@ -882,6 +1075,7 @@
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#about" class="nav-link">About</a></li>
                 <li><a href="#interests" class="nav-link">Interests</a></li>
+                <li><a href="#plan" class="nav-link">30-60-90 Plan</a></li>
                 <li><a href="#experience" class="nav-link">Experience</a></li>
                 <li><a href="#projects" class="nav-link">Projects</a></li>
                 <li><a href="#skills" class="nav-link">Skills</a></li>
@@ -895,7 +1089,6 @@
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-left">
-
             <h1>Connor Regard, EIT</h1>
             <p class="hero-subtitle">Data Engineer | Electrical Engineer</p>
             <p class="hero-description">LSU Electrical Engineering graduate combining technical expertise with entrepreneurial drive. Specializing in low-voltage systems, data infrastructure, and building solutions that bridge engineering and business.</p>
@@ -984,6 +1177,395 @@
                         <p>I was so impressed by how the right solution at the right time completely changed my outcome that I reached out to Wasim directly, offering to work for free just to learn. What started as curiosity turned into a partnership where I conduct competitive analysis, SEO audits, and sales strategy work for Study for FE.</p>
                         <p>But the part that really surprised me was working with students during onboarding. Understanding their challenges, talking through their goals, and helping them find the right solution became my favorite part of the week. That's when I realized something important: I genuinely enjoy working with people, understanding their problems, and helping them find solutions.</p>
                         <p>So while I'm building my technical career, I'm also exploring opportunities where I can combine my engineering background with this newfound interest in working directly with people. Whether that's in technical sales, solutions engineering, or customer success, I'm excited to find a role where I can use both my technical skills and my passion for helping people solve problems.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 30-60-90 Day Plan Section -->
+            <section id="plan">
+                <div class="section-header">
+                    <div class="section-label">Strategic Approach</div>
+                    <h2 class="section-title">My 30-60-90 Day Plan</h2>
+                    <p class="section-description">How I approach new roles to deliver value quickly while building lasting relationships and deep product knowledge. Click each phase to expand.</p>
+                </div>
+                
+                <div class="plan-accordion">
+                    <!-- Days 1-30 -->
+                    <div class="plan-phase active">
+                        <div class="plan-phase-header" onclick="togglePhase(this)">
+                            <div class="plan-phase-title">
+                                <div class="plan-phase-number">30</div>
+                                <div class="plan-phase-info">
+                                    <h3>Days 1-30: "Sponge Mode"</h3>
+                                    <p class="plan-phase-subtitle">Foundation Building & Deep Learning</p>
+                                </div>
+                            </div>
+                            <div class="plan-toggle">
+                                <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                            </div>
+                        </div>
+                        <div class="plan-phase-content">
+                            <div class="plan-categories">
+                                <div class="plan-category">
+                                    <h4>📋 Organizational Alignment</h4>
+                                    <div class="plan-items">
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Define Success Metrics</strong>
+                                                <p>Meet with manager to align on what success looks like in first 30-90 days and beyond</p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Complete Onboarding</strong>
+                                                <p>Finish all mandatory company and HR trainings, compliance modules, and system access</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="plan-category">
+                                    <h4>🤝 Relationship Building</h4>
+                                    <div class="plan-items">
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Schedule Team 1:1s</strong>
+                                                <p>Meet with ALL team members including SDRs, AEs, SEs, and cross-functional partners (Marketing, CS, Product)</p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Shadow Top Performers</strong>
+                                                <p>Spend time with top SDRs and AEs - learn why they're successful and what I can replicate</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="plan-category">
+                                    <h4>🎯 Product & Market Knowledge</h4>
+                                    <div class="plan-items">
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Master Product Knowledge</strong>
+                                                <p>Learn key use cases, problems solved, product differentiators, and understand WHY customers buy</p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Define Ideal Customer Profile</strong>
+                                                <p>Understand who the ICP is, what the BEST customer looks like, and who NOT to target</p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Study Call Recordings</strong>
+                                                <p>Watch discovery and demo call recordings from top performers to learn messaging and objection handling</p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Learn Competitive Landscape</strong>
+                                                <p>Understand who we compete against, our advantages, and how to position against competitors</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="plan-category">
+                                    <h4>⚙️ Tools & Tech Stack</h4>
+                                    <div class="plan-items">
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Master the Sales Stack</strong>
+                                                <p>Get familiar with CRM (Salesforce/HubSpot), sales engagement tools (Outreach/SalesLoft), and conversation intelligence (Gong/Chorus)</p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Build Daily Workflow</strong>
+                                                <p>Create a systematic workflow for prospecting, follow-ups, and pipeline management using the tech stack</p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Learn Research Tools</strong>
+                                                <p>Get proficient with LinkedIn Sales Navigator, ZoomInfo, 6sense, or other prospecting/intent data tools</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Days 31-60 -->
+                    <div class="plan-phase">
+                        <div class="plan-phase-header" onclick="togglePhase(this)">
+                            <div class="plan-phase-title">
+                                <div class="plan-phase-number">60</div>
+                                <div class="plan-phase-info">
+                                    <h3>Days 31-60: Active Contribution</h3>
+                                    <p class="plan-phase-subtitle">Application & Early Results</p>
+                                </div>
+                            </div>
+                            <div class="plan-toggle">
+                                <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                            </div>
+                        </div>
+                        <div class="plan-phase-content">
+                            <div class="plan-categories">
+                                <div class="plan-category">
+                                    <h4>📞 Prospecting & Outreach</h4>
+                                    <div class="plan-items">
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Launch Outbound Campaigns</strong>
+                                                <p>Begin prospecting using learned best practices, ICP targeting, and multi-channel sequences</p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Handle Inbound Leads</strong>
+                                                <p>Take ownership of inbound leads, qualify them effectively, and conduct discovery calls</p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Test Messaging Variations</strong>
+                                                <p>A/B test different email subject lines, call openers, and value propositions to find what resonates</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="plan-category">
+                                    <h4>🎯 Performance & Results</h4>
+                                    <div class="plan-items">
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Book First Meetings</strong>
+                                                <p>Generate first qualified opportunities and book meetings for AEs</p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Build Consistent Pipeline</strong>
+                                                <p>Focus on hitting daily activity metrics to create a healthy pipeline</p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Track Personal Metrics</strong>
+                                                <p>Monitor call-to-connect rates, email response rates, and meeting-set rates to identify improvement areas</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="plan-category">
+                                    <h4>📈 Continuous Improvement</h4>
+                                    <div class="plan-items">
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Get Manager Feedback</strong>
+                                                <p>Regular check-ins on call quality, qualification standards, and areas to improve</p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Refine Discovery Process</strong>
+                                                <p>Iterate on question frameworks and qualification criteria based on AE feedback</p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Collaborate with AEs</strong>
+                                                <p>Build strong partnerships with assigned AEs, learn what makes a quality handoff</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Days 61-90 -->
+                    <div class="plan-phase">
+                        <div class="plan-phase-header" onclick="togglePhase(this)">
+                            <div class="plan-phase-title">
+                                <div class="plan-phase-number">90</div>
+                                <div class="plan-phase-info">
+                                    <h3>Days 61-90: Optimization & Scale</h3>
+                                    <p class="plan-phase-subtitle">Hitting Stride & Contributing Ideas</p>
+                                </div>
+                            </div>
+                            <div class="plan-toggle">
+                                <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+                            </div>
+                        </div>
+                        <div class="plan-phase-content">
+                            <div class="plan-categories">
+                                <div class="plan-category">
+                                    <h4>🏆 Performance Excellence</h4>
+                                    <div class="plan-items">
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Meet/Exceed Quota</strong>
+                                                <p>Consistently hit or exceed activity quotas, meeting quotas, and pipeline targets</p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Optimize Conversion Rates</strong>
+                                                <p>Analyze my funnel metrics and implement tactics to improve conversion at each stage</p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Master Time Management</strong>
+                                                <p>Create efficient daily routines that maximize productive selling time</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="plan-category">
+                                    <h4>💡 Value-Add Contributions</h4>
+                                    <div class="plan-items">
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Share Market Insights</strong>
+                                                <p>Contribute insights from prospect conversations to team knowledge base and product feedback</p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Document Best Practices</strong>
+                                                <p>Create playbooks or templates that helped me succeed to share with the team</p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Support New Team Members</strong>
+                                                <p>Help onboard newer SDRs with lessons learned from my first 90 days</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="plan-category">
+                                    <h4>🚀 Career Development</h4>
+                                    <div class="plan-items">
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Identify Growth Opportunities</strong>
+                                                <p>Pinpoint specific skills or areas to develop for promotion to AE or next role</p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Plan Next Quarter Goals</strong>
+                                                <p>Meet with manager to set Q2 goals and discuss promotion path/timeline</p>
+                                            </div>
+                                        </div>
+                                        <div class="plan-item">
+                                            <div class="plan-checkbox">
+                                                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                                            </div>
+                                            <div class="plan-item-text">
+                                                <strong>Expand Product Knowledge</strong>
+                                                <p>Begin learning adjacent products or advanced features to position for growth</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -1265,7 +1847,7 @@
                         <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
                     </div>
                     <div class="contact-label">Email</div>
-                    <a href="/cdn-cgi/l/email-protection#c1a2aeafafaeb3b3a4a6a0b3a5f081a6aca0a8adefa2aeac"><span class="__cf_email__" data-cfemail="2e4d414040415c5c4b494f5c4a1f6e49434f4742004d4143">[email&#160;protected]</span></a>
+                    <a href="mailto:connorregard@gmail.com">connorregard@gmail.com</a>
                 </div>
 
                 <div class="contact-card">
@@ -1300,7 +1882,23 @@
         <p>&copy; 2025 Connor Regard. All rights reserved.</p>
     </footer>
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+    <script>
+        // Toggle accordion phases
+        function togglePhase(header) {
+            const phase = header.parentElement;
+            const wasActive = phase.classList.contains('active');
+            
+            // Close all phases
+            document.querySelectorAll('.plan-phase').forEach(p => {
+                p.classList.remove('active');
+            });
+            
+            // If it wasn't active, open it
+            if (!wasActive) {
+                phase.classList.add('active');
+            }
+        }
+
         // Mobile menu toggle
         function toggleMenu() {
             document.getElementById('navMenu').classList.toggle('active');
@@ -1357,4 +1955,9 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.about-card, .timeline-item, .project-card, .skill-item, .cert-card, .reference-card').forEa
+        document.querySelectorAll('.about-card, .timeline-item, .project-card, .skill-item, .cert-card, .reference-card, .plan-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
